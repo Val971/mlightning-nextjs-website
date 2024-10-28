@@ -16,9 +16,9 @@ const Navbar = () => {
           className='dark:invert'
           src='/images/logo.png'
           alt='mlightning logo'
-          width={180}
-          height={38}
-          priority
+          width={40}
+          height={40}
+          unoptimized={true}
         />
 
         {/* Lien de Navigation */}
