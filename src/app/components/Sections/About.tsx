@@ -59,15 +59,10 @@ export default function About() {
               },
             }}
             className='relative'>
-            <Image
+            <img
               className='dark:invert w-full '
-              src='/images/carousel3.webp'
+              src='/images/about.webp'
               alt='mlightning logo'
-              width={600}
-              height={400}
-              layout='responsive'
-              quality={100}
-              objectFit='cover'
             />
           </motion.div>
         </div>
