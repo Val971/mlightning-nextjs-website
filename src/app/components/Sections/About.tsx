@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import Image from 'next/image';
 import Button from '../Button';
 import { motion, useAnimation, useInView } from 'framer-motion';
 
@@ -59,13 +58,10 @@ export default function About() {
               },
             }}
             className='relative'>
-            <Image
+            <img
               className='dark:invert w-full '
               src='/images/about.png'
               alt='mlightning logo'
-              width={400}
-              height={400}
-              priority
             />
           </motion.div>
         </div>
