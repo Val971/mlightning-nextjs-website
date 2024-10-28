@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
 
   images: {
     domains: ['lh3.googleusercontent.com', 'https://mlightning-custom.fr'],
-    formats: ['image/avif', 'image/webp', 'image/png'],
+    formats: ['image/avif', 'image/webp'],
   },
 
   remotePatterns: [
