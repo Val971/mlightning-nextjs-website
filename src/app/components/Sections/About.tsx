@@ -63,10 +63,11 @@ export default function About() {
               className='dark:invert w-full '
               src='/images/about.webp'
               alt='mlightning logo'
-              width={400}
+              width={600}
               height={400}
-              priority
+              layout='responsive'
               quality={100}
+              objectFit='cover'
             />
           </motion.div>
         </div>
