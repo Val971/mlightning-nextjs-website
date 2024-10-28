@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
+import { motion, useAnimation, useInView } from 'framer-motion';
 import Image from 'next/image';
 import Button from '../Button';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import aboutImg from '../../../../public/images/about.webp';
 
 export default function About() {
   const controls = useAnimation();
@@ -59,10 +60,15 @@ export default function About() {
               },
             }}
             className='relative'>
-            <img
+            <Image
               className='dark:invert w-full '
-              src='/images/about.webp'
+              src={aboutImg || null}
               alt='mlightning logo'
+              width={600}
+              height={400}
+              layout='responsive'
+              quality={100}
+              objectFit='cover'
             />
           </motion.div>
         </div>
