@@ -61,7 +61,7 @@ export default function About() {
             className='relative'>
             <Image
               className='dark:invert w-full '
-              src='/images/about.webp'
+              src='/images/carousel3.webp'
               alt='mlightning logo'
               width={600}
               height={400}
