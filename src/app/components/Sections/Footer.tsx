@@ -25,7 +25,7 @@ export default function Footer() {
   return (
     <footer className='py-6 bg-black mt-20 text-white'>
       <div className='container px-6 mx-auto space-y-6 divide-y divide-blue-500  md:space-y-12 divide-opacity-50 lg:max-w-7xl lg:mx-auto  lg:pt-32 pt-20'>
-        <div className='flex justify-between'>
+        <div className='lg:flex justify-between'>
           <motion.div
             ref={ref}
             initial='hidden'

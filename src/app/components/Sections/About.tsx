@@ -5,44 +5,23 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 
 export default function About() {
   const controls = useAnimation();
-  const ref1 = useRef(null);
   const ref2 = useRef(null);
-  const ref1IsInView = useInView(ref1);
   const ref2IsInView = useInView(ref2);
 
   useEffect(() => {
-    if (ref1IsInView) {
-      controls.start('visible');
-    } else {
-      controls.start('hidden');
-    }
     if (ref2IsInView) {
       controls.start('visible');
     } else {
       controls.start('hidden');
     }
-  }, [controls, ref1IsInView, ref2IsInView]);
+  }, [controls, ref2IsInView]);
   return (
     <section
       id='about'
       className='pt-10 overflow-hidden   md:pt-0 sm:pt-16 2xl:pt-16 mt-20'>
       <div className='px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl'>
         <div className='grid items-center grid-cols-1 md:grid-cols-2 gap-8'>
-          <motion.div
-            ref={ref1}
-            initial='hidden'
-            animate={controls}
-            variants={{
-              hidden: { opacity: 0, y: 100 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: {
-                  duration: 0.9,
-                  ease: 'easeInOut',
-                },
-              },
-            }}>
+          <div>
             <h2 className='text-white uppercase text-3xl lg:text-5xl font-bold'>
               Pourquoi choisir la qualité
             </h2>
@@ -62,7 +41,7 @@ export default function About() {
               </h3>
             </div>
             <Button text='Voir plus' link='/' />
-          </motion.div>
+          </div>
 
           <motion.div
             ref={ref2}

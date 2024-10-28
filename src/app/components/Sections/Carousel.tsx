@@ -46,7 +46,7 @@ const Carousel = () => {
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}>
-            <div className='flex flex-col justify-end pb-20 mb:pb-32 lg:pb-20 2xl:pb-40 items-center w-full h-full p-4 bg-black bg-opacity-50 '>
+            <div className='flex justify-center flex-col lg:justify-end pb-20 mb:pb-32 lg:pb-20 2xl:pb-40 items-center w-full h-full p-4 bg-black bg-opacity-50 '>
               <div className='lg:max-w-7xl lg:mx-auto lg:flex lg:flex-col lg:pt-32 pt-20 lg:w-[1200px]'>
                 <h1 className='text-white uppercase font-bold text-3xl lg:text-6xl self-start lg:w-[700px]'>
                   {item.title}
