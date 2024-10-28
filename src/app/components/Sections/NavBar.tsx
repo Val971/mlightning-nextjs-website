@@ -14,7 +14,7 @@ const Navbar = () => {
         {/* Logo */}
         <Image
           className='dark:invert'
-          src='/images/logo.png'
+          src='/images/logo.webp'
           alt='mlightning logo'
           width={180}
           height={38}

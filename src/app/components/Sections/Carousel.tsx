@@ -51,10 +51,12 @@ const Carousel = () => {
                 <h1 className='text-white uppercase font-bold text-3xl lg:text-6xl self-start lg:w-[700px]'>
                   {item.title}
                 </h1>
-                <p className='text-[#d3d3d3d3] leading-7 my-4 lg:my-6 text-lg lg:w-[600px]'>
+                <p className='text-[#d3d3d3d3] leading-7 my-8 lg:my-6 text-lg lg:w-[600px]'>
                   {item.description}
                 </p>
-                <Button text={item.btn} link={item.url} />
+                <div className=''>
+                  <Button text={item.btn} link={item.url} />
+                </div>
               </div>
             </div>
           </div>

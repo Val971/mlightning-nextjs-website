@@ -88,7 +88,7 @@ export default function Reviews() {
                               height={50}
                               src={review.profile_photo_url}
                               className='w-12 h-12 bg-center bg-cover border rounded-full'
-                              alt='Kanye West'
+                              alt='author icon'
                             />
                             <div>
                               <h3 className='text-lg font-semibold text-white'>

@@ -44,7 +44,7 @@ export default function Footer() {
             className='pb-6 col-span-full md:pb-0 md:col-span-6 flex flex-col gap-8'>
             <Image
               className='dark:invert'
-              src='/images/logo.png'
+              src='/images/logo.webp'
               alt='mlightning logo'
               width={180}
               height={38}
