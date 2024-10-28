@@ -46,9 +46,9 @@ export default function Footer() {
               className='dark:invert'
               src='/images/logo.png'
               alt='mlightning logo'
-              width={40}
-              height={40}
-              unoptimized={true}
+              width={180}
+              height={38}
+              priority
             />
             <p className='lg:w-[25rem]'>
               Transformez votre expérience de conduite avec Mlightning. Nous

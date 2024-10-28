@@ -11,10 +11,10 @@ export default function Services() {
       <div className='relative'>
         <div className='sticky top-40'>
           <h2 className='text-white uppercase text-4xl font-bold lg:text-5xl'>
-            Dedicated Services
+            Services dédiés
           </h2>
           <p className='text-[#d3d3d3d3] text-lg py-5'>
-            {`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's stan. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.`}
+            {`Nous sommes passionnés par l'art de transformer votre voiture en un espace qui vous ressemble vraiment. Que vous cherchiez à personnaliser l'intérieur de votre véhicule pour le rendre plus confortable, plus luxueux, ou tout simplement unique, nous avons les services qu'il vous faut pour donner vie à votre vision.`}
           </p>
           <Links text={`Voir tous les services`} />
         </div>

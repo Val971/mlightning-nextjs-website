@@ -44,23 +44,3 @@ export default function ServiceCard({ item }: ServiceCardProps) {
     </motion.div>
   );
 }
-
-{
-  /* <div className='flex lg:mb-8 bg-gradient-to-r from-black  w-full h-96  overflow-hidden to-transparent'>
-<Image
-  className='dark:invert self-center object-cover w-full h-full transition-transform duration-500 ease-in-out transform hover:scale-110 '
-  src={item.url}
-  alt='mlightning logo'
-  width={348}
-  height={325}
-  priority
-/>
-<div className='flex flex-col pl-10 justify-center lg:w-1/2 '>
-  <h3 className='text-white text-2xl lg:text-3xl uppercase font-bold'>
-    {item.title}
-  </h3>
-  <p className='text-[#d3d3d3d3] py-2 lg:mb-6'>{item.description}</p>
-  <Links text={`Voir plus`} />
-</div>
-</div> */
-}
