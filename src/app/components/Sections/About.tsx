@@ -62,13 +62,11 @@ export default function About() {
             className='relative'>
             <Image
               className='dark:invert w-full '
-              src={aboutImg || null}
+              src={`https://res.cloudinary.com/devep79in/image/upload/v1728876683/premium_photo_1661583853451_2361111f284f_4bd145f81a.avif`}
               alt='mlightning logo'
               width={600}
               height={400}
-              layout='responsive'
               quality={100}
-              objectFit='cover'
             />
           </motion.div>
         </div>
