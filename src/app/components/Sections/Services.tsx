@@ -8,7 +8,7 @@ export default function Services() {
     <div
       id='services'
       className='gap-12 grid p-4 lg:pt-32 pt-20 lg:max-w-7xl lg:mx-auto lg:grid lg:grid-cols-3 relative'>
-      <div className='sticky top-0'>
+      <div className=''>
         <h2 className='text-white uppercase text-4xl font-bold lg:text-5xl'>
           Services dédiés
         </h2>
