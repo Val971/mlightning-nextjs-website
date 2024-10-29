@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import Image from 'next/image';
 import Button from '../Button';
-import aboutImg from '../../../../public/images/about.webp';
 
 export default function About() {
   const controls = useAnimation();
