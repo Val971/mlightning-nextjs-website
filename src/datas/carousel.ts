@@ -12,7 +12,7 @@ export const carouselDatas = [
     btn: 'Prendre rendez-vous',
   },
   {
-    url: '/images/carousel4.webp',
+    url: '/images/carousel1.avif',
     title: 'Système Audio Haut de Gamme',
     description: `Profitez d’une expérience sonore immersive avec un système audio sur mesure.`,
     btn: 'Prendre rendez-vous',

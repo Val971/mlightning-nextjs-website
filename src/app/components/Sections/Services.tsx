@@ -7,17 +7,15 @@ export default function Services() {
   return (
     <div
       id='services'
-      className='gap-12 grid p-4 lg:pt-32 pt-20 lg:max-w-7xl lg:mx-auto  lg:grid lg:grid-cols-3 relative'>
-      <div className='relative'>
-        <div className='sticky top-40'>
-          <h2 className='text-white uppercase text-4xl font-bold lg:text-5xl'>
-            Services dédiés
-          </h2>
-          <p className='text-[#d3d3d3d3] text-lg py-5'>
-            {`Nous sommes passionnés par l'art de transformer votre voiture en un espace qui vous ressemble vraiment. Que vous cherchiez à personnaliser l'intérieur de votre véhicule pour le rendre plus confortable, plus luxueux, ou tout simplement unique, nous avons les services qu'il vous faut pour donner vie à votre vision.`}
-          </p>
-          <Links text={`Voir tous les services`} />
-        </div>
+      className='gap-12 grid p-4 lg:pt-32 pt-20 lg:max-w-7xl lg:mx-auto lg:grid lg:grid-cols-3 relative'>
+      <div className='sticky top-0'>
+        <h2 className='text-white uppercase text-4xl font-bold lg:text-5xl'>
+          Services dédiés
+        </h2>
+        <p className='text-[#d3d3d3d3] text-lg py-5'>
+          {`Nous sommes passionnés par l'art de transformer votre voiture en un espace qui vous ressemble vraiment. Que vous cherchiez à personnaliser l'intérieur de votre véhicule pour le rendre plus confortable, plus luxueux, ou tout simplement unique, nous avons les services qu'il vous faut pour donner vie à votre vision.y`}
+        </p>
+        <Links text={`Voir tous les services`} />
       </div>
       <div className='  gap-8 lg:col-span-2'>
         {services.map((item) => {

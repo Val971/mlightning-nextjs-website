@@ -47,7 +47,7 @@ export default function CompetenceCard({ item }: CompetenceCardProps) {
         <div className=' animate-pulse bg-cyan-500 rounded-full self-center'>
           <div className='bg-cyan-500 p-3 rounded-full'>
             <Image
-              className='dark:invert self-center'
+              className='self-center'
               src={item.url}
               alt='mlightning logo'
               width={30}

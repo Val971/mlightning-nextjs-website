@@ -22,11 +22,11 @@ export default function ServiceCard({ item }: ServiceCardProps) {
     <motion.div>
       <div className='flex lg:mb-8 bg-gradient-to-r from-black   w-full lg:h-96  overflow-hidden to-transparent'>
         <img
-          className='dark:invert self-center object-cover w-full md:w-96 h-96 transition-transform duration-500 ease-in-out transform hover:scale-110 '
+          className=' self-center object-cover w-full md:w-96 h-96 transition-transform duration-500 ease-in-out transform hover:scale-110 '
           src={item.url}
           alt='mlightning logo'
         />
-        <div className=' hidden lg:flex flex-col pl-10 justify-center lg:w-1/2 '>
+        <div className=' hidden md:flex flex-col pl-10 justify-center lg:w-1/2 '>
           <h3 className='text-white text-2xl lg:text-3xl uppercase font-bold'>
             {item.title}
           </h3>
@@ -34,7 +34,7 @@ export default function ServiceCard({ item }: ServiceCardProps) {
           <Links text={`Voir plus`} />
         </div>
       </div>
-      <div className=' lg:hidden flex-col pb-20 pt-10 justify-center lg:w-1/2 '>
+      <div className='md:hidden flex-col pb-20 pt-10 justify-center lg:w-1/2 '>
         <h3 className='text-white text-2xl lg:text-3xl uppercase font-bold'>
           {item.title}
         </h3>

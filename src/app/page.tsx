@@ -12,7 +12,7 @@ import Whatsapp from './components/FloatingWhatsApp';
 
 export default function Home() {
   return (
-    <div className='overflow-hidden'>
+    <div className=''>
       <Carousel />
       <Competences />
       <About />

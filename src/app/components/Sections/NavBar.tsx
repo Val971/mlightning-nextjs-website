@@ -2,10 +2,21 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedLink, setSelectedLink] = useState('hero');
   const params = usePathname();
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleClickNav = (content: string) => {
+    setSelectedLink(content);
+    document.getElementById(content)?.scrollIntoView({ behavior: 'smooth' });
+    setIsOpen(false);
+  };
 
   return (
     <nav
@@ -13,7 +24,6 @@ const Navbar = () => {
       <div className='max-w-7xl mx-auto py-4 px-8 flex justify-between items-center'>
         {/* Logo */}
         <Image
-          className='dark:invert'
           src='/images/logo.webp'
           alt='mlightning logo'
           width={180}
@@ -31,20 +41,20 @@ const Navbar = () => {
             </Link>
           </li>
           <li className='hover:text-cyan-500 transition duration-300 ease-in-out hover:scale-110'>
-            <a
+            <Link
               href='#services'
               className={`${
                 params.includes('services') ? 'text-cyan-500' : ''
               }`}>
               Services
-            </a>
+            </Link>
           </li>
           <li className='hover:text-cyan-500 transition duration-300 ease-in-out hover:scale-110'>
-            <a
+            <Link
               href='#about'
               className={`${params.includes('about') ? 'text-cyan-500' : ''}`}>
               À propos
-            </a>
+            </Link>
           </li>
         </ul>
 
@@ -75,10 +85,57 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-
+        {/* Liens du menu à gauche */}
+        <div
+          className={`${
+            isOpen ? 'top-[-20%] bg-[#101010]' : 'top-[-900%]'
+          }   duration-500 md:static z-20 h-[50rem] items-start md:items-center md:h-auto md:hidden  absolute  md:min-h-fit min-h-[37vh] left-0  md:w-auto  w-full py-10 flex px-5`}>
+          <ul
+            className={`flex-col   text-[#fff] flex w-full md:flex-row md:mt-auto  md:items-center md:gap-[4vw] gap-8 font-semibold text-4xl md:text-base mt-10`}>
+            <li>
+              <a
+                onClick={() => handleClickNav('/')}
+                className={`hover:text-cyan-500 cursor-pointer ${
+                  selectedLink === `$/` ? 'text-bg-cyan-500' : ''
+                }`}>
+                Accueil
+              </a>
+            </li>
+            <li>
+              <Link
+                href='#services'
+                onClick={() => handleClickNav('services')}
+                className={`hover:text-cyan-500 cursor-pointer ${
+                  selectedLink === `services` ? 'text-bg-cyan-500' : ''
+                }`}>
+                Services
+              </Link>
+            </li>
+            <li>
+              <Link
+                href='#about'
+                onClick={() => handleClickNav('about')}
+                className={`hover:text-cyan-500 cursor-pointer ${
+                  selectedLink === `about` ? 'text-bg-cyan-500' : ''
+                }`}>
+                À propos
+              </Link>
+            </li>
+          </ul>
+          <Image
+            onClick={() => toggleMenu()}
+            loading='lazy'
+            src='/images/close.png'
+            className='lg:hidden  cursor-pointer'
+            alt='close button'
+            width={40}
+            height={40}
+          />
+        </div>
         {/* Bouton Menu (Mobile) */}
         <div className='md:hidden text-white text-3xl cursor-pointer'>
           <svg
+            onClick={() => toggleMenu()}
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
             viewBox='0 0 24 24'

@@ -43,7 +43,6 @@ export default function Footer() {
             }}
             className='pb-6 col-span-full md:pb-0 md:col-span-6 flex flex-col gap-8'>
             <Image
-              className='dark:invert'
               src='/images/logo.webp'
               alt='mlightning logo'
               width={180}
@@ -131,7 +130,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href='#' className='text-gray-500 hover:text-blue-500 '>
+                <a
+                  href='https://www.instagram.com/mlightning_custom/'
+                  className='text-gray-500 hover:text-blue-500 '>
                   <svg
                     className='w-10 h-10'
                     fill='currentColor'

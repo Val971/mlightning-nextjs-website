@@ -40,25 +40,36 @@ const Carousel = () => {
         {carouselDatas.map((item, index) => (
           <div
             key={index}
-            className='w-screen h-screen flex-shrink-0'
+            className='w-full h-screen flex-shrink-0'
             style={{
               backgroundImage: `url(${item.url})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}>
-            <div className='flex justify-center flex-col lg:justify-end pb-20 mb:pb-32 lg:pb-20 2xl:pb-40 items-center w-full h-full p-4 bg-black bg-opacity-50 '>
-              <div className='lg:max-w-7xl lg:mx-auto lg:flex lg:flex-col lg:pt-32 pt-20 lg:w-[1200px]'>
-                <h1 className='text-white uppercase font-bold text-3xl lg:text-6xl self-start lg:w-[700px]'>
-                  {item.title}
-                </h1>
-                <p className='text-[#d3d3d3d3] leading-7 my-8 lg:my-6 text-lg lg:w-[600px]'>
-                  {item.description}
-                </p>
-                <div className=''>
-                  <Button text={item.btn} link={item.url} />
-                </div>
+            {carouselDatas.map((item, index) => (
+              <div
+                key={index}
+                className='w-full h-screen flex-shrink-0'
+                style={{
+                  backgroundImage: `url(${item.url})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}>
+                <section className=' pt-24 h-screen flex'>
+                  <div className='grid max-w-screen-xl px-4 py-8  mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12'>
+                    <div className='mr-auto place-self-center lg:col-span-7'>
+                      <h1 className='max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white'>
+                        {item.title}
+                      </h1>
+                      <p className='max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400'>
+                        {item.description}
+                      </p>
+                      <Button text={item.btn} link={item.url} />
+                    </div>
+                  </div>
+                </section>
               </div>
-            </div>
+            ))}
           </div>
         ))}
       </div>
