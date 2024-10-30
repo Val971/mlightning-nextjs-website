@@ -7,8 +7,12 @@ import React from 'react';
 
 interface CompetenceCardProps {
   item: IItem;
+  isServiceDetails?: boolean;
 }
-export default function CompetenceCard({ item }: CompetenceCardProps) {
+export default function CompetenceCard({
+  item,
+  isServiceDetails = false,
+}: CompetenceCardProps) {
   const controls = useAnimation();
   const ref = useRef(null);
   const isInView = useInView(ref);
@@ -36,13 +40,15 @@ export default function CompetenceCard({ item }: CompetenceCardProps) {
           },
         },
       }}
-      className='p-4 text-center'>
-      <div className='flex justify-center items-center gap-10 py-5'>
-        <h4 className='stock font-extrabold  text-white text-transparent stroke-orange-50 text-2xl'>
-          {item.number}
-        </h4>
-        <div className='bg-white w-full h-[1px]'></div>
-      </div>
+      className=' text-center'>
+      {!isServiceDetails && (
+        <div className='flex justify-center items-center gap-10 py-5'>
+          <h4 className='stock font-extrabold text-white text-transparent stroke-orange-50 text-2xl'>
+            {item.number}
+          </h4>
+          <div className='bg-white w-full h-[1px]'></div>
+        </div>
+      )}
       <div className='bg-black px-9 py-11 flex flex-col'>
         <div className=' animate-pulse bg-cyan-500 rounded-full self-center'>
           <div className='bg-cyan-500 p-3 rounded-full'>

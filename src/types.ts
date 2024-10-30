@@ -6,7 +6,19 @@ export interface IItem {
   description: string;
   duration?: number;
 }
-
+export interface IService {
+  id: number;
+  url: string;
+  title: string;
+  description: string;
+  details: IDetail[];
+}
+interface IDetail {
+  id: number;
+  title: string;
+  description: string;
+  url?: string;
+}
 export interface IReview {
   author_name: string;
   relative_time_description: string;

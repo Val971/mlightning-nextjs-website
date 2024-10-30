@@ -40,22 +40,24 @@ const Carousel = () => {
         {carouselDatas.map((item, index) => (
           <div
             key={index}
-            className='w-full h-screen flex-shrink-0'
+            className='w-full h-screen flex-shrink-0 '
             style={{
               backgroundImage: `url(${item.url})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}>
-            <section className=' pt-24 h-screen flex'>
+            <section className=' pt-24 h-screen flex '>
               <div className='grid max-w-screen-xl px-4 py-8  mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12'>
-                <div className='mr-auto place-self-center lg:col-span-7'>
-                  <h1 className='max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white'>
+                <div className='mr-auto gap-8 place-self-center lg:col-span-7'>
+                  <h1 className='max-w-lg mb-4 text-4xl font-extrabold tracking-tight leading-none xl:text-6xl  inset-0 text-white  flex items-center justify-center'>
                     {item.title}
                   </h1>
-                  <p className='max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400'>
+                  <p className='max-w-2xl mb-6 font-light text-white lg:mb-8 text-lg lg:text-xl'>
                     {item.description}
                   </p>
-                  <Button text={item.btn} link={item.url} />
+                  <div className='mt-10'>
+                    <Button text={item.btn} link={'tel:+33750587711'} />
+                  </div>
                 </div>
               </div>
             </section>

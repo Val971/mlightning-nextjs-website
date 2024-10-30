@@ -23,14 +23,15 @@ const Navbar = () => {
       className={`fixed h-24 w-full  top-0 left-0 z-50 transition-all duration-300 bg-transparent backdrop-blur-sm shadow-lg border-b-[0.1rem]`}>
       <div className='max-w-7xl mx-auto py-4 px-8 flex justify-between items-center'>
         {/* Logo */}
-        <Image
-          src='/images/logo.webp'
-          alt='mlightning logo'
-          width={180}
-          height={38}
-          priority
-        />
-
+        <Link href={'/'}>
+          <Image
+            src='/images/logo.webp'
+            alt='mlightning logo'
+            width={180}
+            height={38}
+            priority
+          />
+        </Link>
         {/* Lien de Navigation */}
         <ul className='hidden md:flex space-x-8 text-white text-lg'>
           <li className='hover:text-cyan-500 transition duration-300 ease-in-out hover:scale-110'>
@@ -125,7 +126,7 @@ const Navbar = () => {
           <Image
             onClick={() => toggleMenu()}
             loading='lazy'
-            src='/images/close.png'
+            src='/icons/close-bold-svgrepo-com.svg'
             className='lg:hidden  cursor-pointer'
             alt='close button'
             width={40}

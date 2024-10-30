@@ -1,7 +1,6 @@
 import React from 'react';
 import { services } from '../../../datas/services';
 import ServiceCard from '../ServiceCard';
-import Links from '../Links';
 
 export default function Services() {
   return (
@@ -15,7 +14,6 @@ export default function Services() {
         <p className='text-[#d3d3d3d3] text-lg py-5'>
           {`Nous sommes passionnés par l'art de transformer votre voiture en un espace qui vous ressemble vraiment. Que vous cherchiez à personnaliser l'intérieur de votre véhicule pour le rendre plus confortable, plus luxueux, ou tout simplement unique, nous avons les services qu'il vous faut pour donner vie à votre vision.y`}
         </p>
-        <Links text={`Voir tous les services`} />
       </div>
       <div className='  gap-8 lg:col-span-2'>
         {services.map((item) => {

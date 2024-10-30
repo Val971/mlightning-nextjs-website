@@ -18,7 +18,7 @@ export default function About() {
   return (
     <section
       id='about'
-      className='pt-10 overflow-hidden   md:pt-0 sm:pt-16 2xl:pt-16 mt-20'>
+      className='pt-10 overflow-hidden md:pt-0 sm:pt-16 2xl:pt-16 mt-20'>
       <div className='px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl'>
         <div className='grid items-center grid-cols-1 md:grid-cols-2 gap-8'>
           <div>

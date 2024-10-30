@@ -67,7 +67,7 @@ export default function Reviews() {
               découvrez ce que nos clients disent de leur expérience avec nos
               services de personnalisation de luxe. Voici quelques avis de
               propriétaires de voitures de prestige qui ont fait confiance à
-              notre savoir-faire pour redéfinir leur intérieur automobile.npm run d`}
+              notre savoir-faire pour redéfinir leur intérieur automobile.`}
             </p>
           </div>
         </div>
