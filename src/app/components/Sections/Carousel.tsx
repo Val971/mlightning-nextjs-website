@@ -66,43 +66,44 @@ const Carousel = () => {
       </div>
 
       {/* Bouton pour aller à l'image précédente */}
-      <button
-        className='absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/20 text-white p-2 rounded-full z-10 hover:bg-white/40 transition-colors'
-        onClick={prevSlide}>
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          fill='none'
-          viewBox='0 0 24 24'
-          stroke='currentColor'
-          className='w-6 h-6'>
-          <path
-            strokeLinecap='round'
-            strokeLinejoin='round'
-            strokeWidth='2'
-            d='M15 19l-7-7 7-7'
-          />
-        </svg>
-      </button>
+      <div className='bg-red-300 h-20'>
+        <button
+          className='absolute top-1/2 mt-[70%] md:mt-0 left-4 transform -translate-y-1/2 bg-white/20 text-white p-2 rounded-full z-10 hover:bg-white/40 transition-colors'
+          onClick={prevSlide}>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke='currentColor'
+            className='w-6 h-6'>
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='2'
+              d='M15 19l-7-7 7-7'
+            />
+          </svg>
+        </button>
 
-      {/* Bouton pour aller à l'image suivante */}
-      <button
-        className='absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/20 text-white p-2 rounded-full z-10 hover:bg-white/40 transition-colors'
-        onClick={nextSlide}>
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          fill='none'
-          viewBox='0 0 24 24'
-          stroke='currentColor'
-          className='w-6 h-6'>
-          <path
-            strokeLinecap='round'
-            strokeLinejoin='round'
-            strokeWidth='2'
-            d='M9 5l7 7-7 7'
-          />
-        </svg>
-      </button>
-
+        {/* Bouton pour aller à l'image suivante */}
+        <button
+          className='absolute top-1/2 mt-[70%] right-60 md:mt-0 md:right-4 transform -translate-y-1/2 bg-white/20 text-white p-2 rounded-full z-10 hover:bg-white/40 transition-colors'
+          onClick={nextSlide}>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke='currentColor'
+            className='w-6 h-6'>
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='2'
+              d='M9 5l7 7-7 7'
+            />
+          </svg>
+        </button>
+      </div>
       {/* Indicateurs (points en bas du carousel) */}
       <div className='absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2'>
         {carouselDatas.map((_, index) => (

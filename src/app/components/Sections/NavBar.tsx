@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
+import MediaSociaux from '../MediaSociaux';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -86,13 +87,16 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+        <div className='hidden md:flex'>
+          <MediaSociaux />
+        </div>
         {/* Liens du menu à gauche */}
         <div
           className={`${
             isOpen ? 'top-[-20%] bg-[#101010]' : 'top-[-900%]'
           }   duration-500 md:static z-20 h-[50rem] items-start md:items-center md:h-auto md:hidden  absolute  md:min-h-fit min-h-[37vh] left-0  md:w-auto  w-full py-10 flex px-5`}>
           <ul
-            className={`flex-col   text-[#fff] flex w-full md:flex-row md:mt-auto  md:items-center md:gap-[4vw] gap-8 font-semibold text-4xl md:text-base mt-10`}>
+            className={`flex-col h-full text-[#fff] flex w-full md:flex-row md:mt-auto  md:items-center md:gap-[4vw] gap-8 font-semibold text-4xl md:text-base mt-10`}>
             <li>
               <a
                 onClick={() => handleClickNav('/')}
@@ -122,6 +126,9 @@ const Navbar = () => {
                 À propos
               </Link>
             </li>
+            <div className='flex flex-col justify-end'>
+              <MediaSociaux justify='justify-start' />
+            </div>
           </ul>
           <Image
             onClick={() => toggleMenu()}

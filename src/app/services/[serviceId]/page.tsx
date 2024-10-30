@@ -67,8 +67,8 @@ export default function ServicesDetail() {
         </Link>
       </div>
       <div className='border-b-[0.1px] border-b-cyan-500'></div>
-      <div className='grid md:grid-cols-3 gap-2 md:gap-8 '>
-        <div className='flex flex-col gap-8 order-last'>
+      <div className='grid grid-cols-1 lg:grid-cols-3  md:gap-8 '>
+        <div className='flex flex-col gap-8 md:order-last mb-8'>
           {competences.map((item) => {
             return (
               <CompetenceCard
