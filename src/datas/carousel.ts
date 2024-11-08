@@ -13,7 +13,7 @@ export const carouselDatas = [
   },
   {
     url: '/images/carousel2.png',
-    title: 'Système Audio Haut de Gamme',
+    title: 'Auto Haut de Gamme',
     description: `Ne laissez pas votre voiture être simplement un moyen de transport. Faites-en un lieu de confort et de fonctionnalité où chaque détail est pensé pour vous. `,
     btn: 'Prendre rendez-vous',
   },

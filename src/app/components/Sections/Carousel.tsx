@@ -56,7 +56,7 @@ const Carousel = () => {
                     {item.description}
                   </p>
                   <div className='mt-10'>
-                    <Button text={item.btn} link={'tel:+33750587711'} />
+                    <Button text={item.btn} link={'tel:+33756946684'} />
                   </div>
                 </div>
               </div>

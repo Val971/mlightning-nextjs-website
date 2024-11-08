@@ -5,7 +5,7 @@ export default function Whatsapp() {
   return (
     <div>
       <FloatingWhatsApp
-        phoneNumber='+33750587711'
+        phoneNumber='+33756946684'
         accountName='Mlightning'
         chatMessage='« Bonjour ! 🤝 Comment puis-je vous aider ? »'
         statusMessage={`Répond généralement dans un délai d'une heure`}

@@ -88,7 +88,7 @@ export default function ServicesDetail() {
             <p>{`N'attendez plus ! Contactez-nous dès aujourd'hui pour discuter de vos besoins et découvrir comment nos experts peuvent vous aider à transformer l'intérieur de votre voiture. Profitez d'une consultation gratuite et laissez-nous vous guider vers une expérience de conduite exceptionnelle.`}</p>
             <Link
               className='px-6 py-4 min-w-[120px] flex justify-center items-center gap-2 text-center text-white  text-lg bg-cyan-500 uppercase'
-              href='tel:+33750587711'>
+              href='tel:+33756946684'>
               <svg
                 width='35px'
                 height='35px'

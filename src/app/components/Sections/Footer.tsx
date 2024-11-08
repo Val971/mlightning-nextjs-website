@@ -91,9 +91,9 @@ export default function Footer() {
                 </div>
               </div>
               <a
-                href='tel:+33750587711'
+                href='tel:+33756946684'
                 className='hover:text-cyan-500 transition duration-300 ease-in-out text-3xl lg:text-5xl font-bold'>
-                +33 7 50 58 77 11
+                +33 7 56 94 66 84
               </a>
             </div>
           </motion.div>
