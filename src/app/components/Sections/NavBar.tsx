@@ -98,13 +98,13 @@ const Navbar = () => {
           <ul
             className={`flex-col h-full text-[#fff] flex w-full md:flex-row md:mt-auto  md:items-center md:gap-[4vw] gap-8 font-semibold text-4xl md:text-base mt-10`}>
             <li>
-              <a
-                onClick={() => handleClickNav('/')}
+              <Link
+                href={'/'}
                 className={`hover:text-cyan-500 cursor-pointer ${
                   selectedLink === `$/` ? 'text-bg-cyan-500' : ''
                 }`}>
                 Accueil
-              </a>
+              </Link>
             </li>
             <li>
               <Link
