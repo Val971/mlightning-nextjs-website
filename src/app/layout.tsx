@@ -17,10 +17,62 @@ const manrope = Manrope({
   weight: ['400', '500', '600', '700'],
 });
 
+const siteUrl = 'https://mlightning-custom.fr';
+const siteName = 'By Mlightning Custom';
+const description =
+  "LED d'ambiance, ciel étoilé, Apple CarPlay, volants sur-mesure et déblocage d'options VAG. Personnalisation d'intérieur automobile à Persan, dans le Val-d'Oise (95). Devis gratuit, réponse en moins d'une heure.";
+
 export const metadata: Metadata = {
-  title: 'By Mlightning Custom — Personnalisation intérieur automobile',
-  description:
-    "LED d'ambiance, ciel étoilé, Apple CarPlay, volants sur-mesure et déblocage d'options VAG. Personnalisation d'intérieur automobile en région parisienne (Val-d'Oise, 95). Devis gratuit, réponse en moins d'une heure.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'By Mlightning Custom — Personnalisation intérieur auto à Persan (95)',
+    template: `%s | ${siteName}`,
+  },
+  description,
+  keywords: [
+    "LED d'ambiance voiture",
+    'ciel étoilé voiture',
+    'Apple CarPlay installation',
+    'volant sur-mesure',
+    'déblocage option VAG',
+    'personnalisation intérieur automobile',
+    'Persan',
+    "Val-d'Oise",
+  ],
+  authors: [{ name: siteName }],
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'fr_FR',
+    url: siteUrl,
+    siteName,
+    title: 'By Mlightning Custom — Personnalisation intérieur auto à Persan (95)',
+    description,
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Éclairage LED d’ambiance By Mlightning Custom',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'By Mlightning Custom — Personnalisation intérieur auto à Persan (95)',
+    description,
+    images: ['/images/og-image.jpg'],
+  },
 };
 
 export default function RootLayout({

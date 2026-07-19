@@ -15,7 +15,7 @@ const footerServices = [
 export default function Footer() {
   return (
     <footer className="border-t border-white/[.08]">
-      <div className="max-w-content mx-auto px-6 pt-14 pb-8 grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-10">
+      <div className="max-w-content mx-auto px-6 pt-14 pb-8 grid grid-cols-[repeat(auto-fit,minmax(min(220px,100%),1fr))] gap-10">
         <div className="max-w-[34ch]">
           <Image
             src="/images/logo-holo-cropped.png"

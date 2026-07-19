@@ -27,7 +27,7 @@ export default function Services() {
         </p>
       </Reveal>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-[1.2rem]">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-[1.2rem]">
         {services.map((service, i) => (
           <Reveal key={service.num} delayMs={i * 80} className="h-full">
             <ServiceCard {...service} />

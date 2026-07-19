@@ -12,7 +12,7 @@ export default function Contact() {
     >
       <Reveal>
         <div
-          className="relative overflow-hidden rounded-card-lg border border-white/[.12] p-[clamp(2.5rem,5vw,4.5rem)]"
+          className="relative overflow-hidden rounded-card-lg border border-white/[.12] max-[640px]:p-6 p-[clamp(2.5rem,5vw,4.5rem)]"
           style={{
             background:
               'linear-gradient(135deg, rgba(120,160,255,.14), rgba(255,150,220,.12))',
@@ -26,7 +26,10 @@ export default function Contact() {
             }}
           />
 
-          <div className="relative grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-10 items-center">
+          {/* Empilé (1 colonne) jusqu'aux petites tablettes incluses, 2
+              colonnes au-delà — même seuil (900px) que le passage au menu
+              hamburger dans le header, pour rester cohérent. */}
+          <div className="relative grid grid-cols-1 min-[901px]:grid-cols-2 gap-10 items-center">
             <div>
               <h2 className="text-[clamp(2.1rem,4.6vw,3.6rem)] tracking-[-.01em]">
                 Parlons de votre projet
@@ -62,7 +65,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="bg-[rgba(7,7,12,.55)] backdrop-blur-[6px] border border-white/[.12] rounded-2xl p-8">
+            <div className="bg-[rgba(7,7,12,.55)] backdrop-blur-[6px] border border-white/[.12] rounded-2xl p-4 sm:p-8">
               <ContactForm />
             </div>
           </div>

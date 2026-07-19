@@ -18,7 +18,7 @@ export default function Process() {
           </h2>
         </Reveal>
 
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-[1.2rem]">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(230px,100%),1fr))] gap-[1.2rem]">
           {processSteps.map((step, i) => (
             <Reveal key={step.n} delayMs={i * 80} className="h-full">
               <div className="h-full p-[1.8rem] border border-white/10 rounded-2xl bg-white/[.02]">

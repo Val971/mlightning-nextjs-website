@@ -4,9 +4,12 @@ import LegalSection from '@/components/legal/LegalSection';
 import { legalEntity, host } from '@/data/business';
 
 export const metadata: Metadata = {
-  title: 'Mentions légales — By Mlightning Custom',
+  title: 'Mentions légales',
   description:
     "Mentions légales du site By Mlightning Custom : éditeur, hébergeur et informations légales.",
+  alternates: {
+    canonical: '/mentions-legales',
+  },
 };
 
 export default function MentionsLegalesPage() {

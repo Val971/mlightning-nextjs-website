@@ -50,7 +50,7 @@ export default async function Testimonials() {
         )}
       </Reveal>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(290px,1fr))] gap-[1.2rem]">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(290px,100%),1fr))] gap-[1.2rem]">
         {items.map((t, i) => (
           <Reveal key={`${t.name}-${i}`} delayMs={i * 80} className="h-full">
             <figure className="h-full m-0 p-8 border border-white/10 rounded-[20px] bg-white/[.03] flex flex-col gap-[1.1rem]">

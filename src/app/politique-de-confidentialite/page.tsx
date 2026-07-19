@@ -4,9 +4,12 @@ import LegalSection from '@/components/legal/LegalSection';
 import { legalEntity } from '@/data/business';
 
 export const metadata: Metadata = {
-  title: 'Politique de confidentialité — By Mlightning Custom',
+  title: 'Politique de confidentialité',
   description:
     'Comment By Mlightning Custom collecte, utilise et protège vos données personnelles via le formulaire de contact du site.',
+  alternates: {
+    canonical: '/politique-de-confidentialite',
+  },
 };
 
 export default function PolitiqueConfidentialitePage() {

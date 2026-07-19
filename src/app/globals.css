@@ -243,4 +243,8 @@ button {
   .btn-holo {
     animation: none !important;
   }
+  .mobile-menu-backdrop,
+  .mobile-menu-panel {
+    transition: none !important;
+  }
 }

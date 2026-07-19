@@ -112,14 +112,14 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="btn-holo justify-center flex-1 disabled:opacity-60 disabled:cursor-wait"
+          className="btn-holo justify-center flex-1 min-w-0 max-w-full overflow-hidden text-ellipsis disabled:opacity-60 disabled:cursor-wait"
         >
-          {status === 'sending' ? 'Envoi en cours…' : '✉️ Demander un devis par email'}
+          {status === 'sending' ? 'Envoi en cours…' : '📧 Envoyer par email'}
         </button>
         <button
           type="button"
           onClick={handleWhatsapp}
-          className="btn-outline justify-center flex-1"
+          className="btn-outline justify-center flex-1 min-w-0 max-w-full overflow-hidden text-ellipsis"
         >
           💬 Envoyer sur WhatsApp
         </button>
