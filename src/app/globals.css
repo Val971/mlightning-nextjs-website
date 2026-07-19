@@ -3,74 +3,244 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --holo-gradient: linear-gradient(
+    115deg,
+    #a0f0ff,
+    #b7a6ff,
+    #ff9ecb,
+    #ffd39e,
+    #a7ffd8
+  );
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: #101010;
-  font-family: var(--font-sarabun);
+  margin: 0;
+  background: #07070c;
+  color: #fff;
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
 h1,
-h3,
 h2,
+h3,
 h4 {
-  font-family: var(--font-oxanium);
+  font-family: var(--font-syne), sans-serif;
+  margin: 0;
+  line-height: 1.02;
+  font-weight: 800;
 }
-.pointer span {
+
+p {
+  margin: 0;
+}
+
+a {
   color: #fff;
-  text-align: center;
-  display: block;
-  width: 31px;
-  padding: 5px 0px;
-  cursor: pointer;
-  animation: pulse 2s infinite;
+  text-decoration: none;
 }
-.stock {
-  //font: 800 20px Arial;
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: #b7a6ff;
+  color: #07070c;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0d16;
+}
+::-webkit-scrollbar-thumb {
+  background: #26263a;
+  border-radius: 8px;
+}
+
+@keyframes holoShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Dégradé holographique appliqué au texte (titres accent, chiffres, étoiles) */
+.holo-text {
+  background-image: var(--holo-gradient);
+  background-size: 220% 220%;
+  animation: holoShift 7s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1px;
-}
-.mark {
-  font-weight: bold;
   color: transparent;
-  -webkit-text-stroke: 1px #d3d3d3; /* Stroke color and width */
-  text-transform: uppercase;
 }
-.mark:hover {
-  -webkit-text-stroke: 2px #06b6d4; /* Change stroke on hover */
+
+.holo-text-static {
+  background-image: var(--holo-gradient);
+  background-size: 220% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
-@-webkit-keyframes pulse {
-  0% {
-    -webkit-box-shadow: 0 0 0 0 rgba(244, 157, 22, 0.4);
+
+/* CTA plein — fond dégradé holo, texte sombre */
+.btn-holo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #07070c;
+  white-space: nowrap;
+  background-image: var(--holo-gradient);
+  background-size: 200% 200%;
+  animation: holoShift 7s ease infinite;
+  box-shadow: 0 8px 30px -8px rgba(160, 180, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.95rem;
+}
+
+/* Carte verre sombre */
+.glass-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+}
+
+.glass-input {
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 0.95rem;
+  outline: none;
+  width: 100%;
+}
+
+.glass-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.glass-input:focus {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ===== Animations ===== */
+
+/* Apparition au scroll (voir composant Reveal) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade-in séquencé à l'arrivée sur la page (hero) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  70% {
-    -webkit-box-shadow: 0 0 0 20px rgba(244, 157, 22, 0);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Flottement doux et continu (visuel hero) */
+@keyframes floaty {
+  0%,
   100% {
-    -webkit-box-shadow: 0 0 0 0 rgba(244, 157, 22, 0);
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
   }
 }
-@keyframes pulse {
-  0% {
-    -moz-box-shadow: 0 0 0 0 rgba(244, 157, 22, 0.4);
-    box-shadow: 0 0 0 0 rgba(244, 157, 22, 0.4);
+.floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+/* Bandeau marquee défilant en boucle */
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
   }
-  70% {
-    -moz-box-shadow: 0 0 0 20px rgba(244, 157, 22, 0);
-    box-shadow: 0 0 0 20px rgba(244, 157, 22, 0);
+  to {
+    transform: translateX(-50%);
   }
-  100% {
-    -moz-box-shadow: 0 0 0 0 rgba(244, 157, 22, 0);
-    box-shadow: 0 0 0 0 rgba(244, 157, 22, 0);
+}
+.marquee-track {
+  animation: marqueeScroll 26s linear infinite;
+}
+
+/* Décourage la sauvegarde directe des photos/vidéos de réalisations
+   (clic-droit, glisser-déposer, menu contextuel iOS). Voir ProtectedImage /
+   ProtectedVideo — une capture d'écran reste toujours possible. */
+.no-drag {
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .animate-fade-up {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+  .floaty,
+  .marquee-track,
+  .holo-text,
+  .btn-holo {
+    animation: none !important;
   }
 }

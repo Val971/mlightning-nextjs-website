@@ -1,0 +1,73 @@
+import Image from 'next/image';
+import { phoneHref } from '@/data/nav';
+import { socials } from '@/data/socials';
+import Reveal from '@/components/ui/Reveal';
+import ContactForm from './ContactForm';
+
+export default function Contact() {
+  return (
+    <section
+      id="contact"
+      className="max-w-content mx-auto px-6 pt-[clamp(3rem,6vw,5rem)] pb-[clamp(4rem,7vw,7rem)]"
+    >
+      <Reveal>
+        <div
+          className="relative overflow-hidden rounded-card-lg border border-white/[.12] p-[clamp(2.5rem,5vw,4.5rem)]"
+          style={{
+            background:
+              'linear-gradient(135deg, rgba(120,160,255,.14), rgba(255,150,220,.12))',
+          }}
+        >
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                'radial-gradient(circle at 80% 20%, rgba(183,166,255,.25), transparent 55%)',
+            }}
+          />
+
+          <div className="relative grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-10 items-center">
+            <div>
+              <h2 className="text-[clamp(2.1rem,4.6vw,3.6rem)] tracking-[-.01em]">
+                Parlons de votre projet
+              </h2>
+              <p className="text-white/[.78] mt-[1.1rem] leading-[1.6] max-w-[42ch]">
+                Un devis gratuit, des conseils personnalisés. On répond
+                généralement en moins d&apos;une heure.
+              </p>
+              <div className="flex flex-wrap gap-[.9rem] mt-8 items-center">
+                <a href={phoneHref} className="btn-holo">
+                  📞 +33 7 56 94 66 84
+                </a>
+                <div className="flex gap-[.6rem]">
+                  {socials.map((social) => (
+                    <a
+                      key={social.label}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.name}
+                      className="w-12 h-12 rounded-full inline-flex items-center justify-center border border-white/20 bg-white/[.06] transition-colors hover:bg-white/[.12] hover:border-white/[.35]"
+                    >
+                      <Image
+                        src={social.icon}
+                        alt={social.name}
+                        width={24}
+                        height={24}
+                        className="w-6 h-6 object-contain"
+                      />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-[rgba(7,7,12,.55)] backdrop-blur-[6px] border border-white/[.12] rounded-2xl p-8">
+              <ContactForm />
+            </div>
+          </div>
+        </div>
+      </Reveal>
+    </section>
+  );
+}

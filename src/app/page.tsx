@@ -1,31 +1,21 @@
-'use client';
-import { LoadScript } from '@react-google-maps/api';
-
-import About from './components/Sections/About';
-import Carousel from './components/Sections/Carousel';
-import Competences from './components/Sections/Competences';
-import Reviews from './components/Sections/Reviews';
-import SatisfactionNumber from './components/Sections/SatisfactionNumber';
-import Services from './components/Sections/Services';
-import VideoPlayeur from './components/Sections/VideoPlayeur';
-import Whatsapp from './components/FloatingWhatsApp';
+import Hero from '@/components/sections/Hero';
+import Marquee from '@/components/sections/Marquee';
+import Services from '@/components/sections/Services';
+import Gallery from '@/components/sections/Gallery';
+import Process from '@/components/sections/Process';
+import Testimonials from '@/components/sections/Testimonials';
+import Contact from '@/components/sections/Contact';
 
 export default function Home() {
   return (
-    <div>
-      <Carousel />
-      <Competences />
-      <About />
+    <>
+      <Hero />
+      <Marquee />
       <Services />
-      <VideoPlayeur />
-      <SatisfactionNumber />
-      <LoadScript
-        googleMapsApiKey={`${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`}
-        libraries={['places']}
-        language='fr'>
-        <Reviews />
-      </LoadScript>
-      <Whatsapp />
-    </div>
+      <Gallery />
+      <Process />
+      <Testimonials />
+      <Contact />
+    </>
   );
 }
