@@ -10,19 +10,29 @@ function readFields(form: FormData) {
   return {
     name: form.get('name')?.toString().trim() ?? '',
     phone: form.get('phone')?.toString().trim() ?? '',
+    vehicle: form.get('vehicle')?.toString().trim() ?? '',
     prestation: form.get('prestation')?.toString() ?? '',
     message: form.get('message')?.toString().trim() ?? '',
   };
 }
 
-export default function ContactForm() {
+type ContactFormProps = {
+  /** Présélectionne une prestation dans le menu déroulant (ex: sur une page
+   * service dédiée). Doit correspondre à une valeur de `prestationOptions`,
+   * sinon le navigateur retombe sur la première option. */
+  defaultPrestation?: string;
+};
+
+export default function ContactForm({ defaultPrestation }: ContactFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<Status>('idle');
 
   // Envoi par email — passe par /api/contact (Resend) côté serveur.
   const handleEmailSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { name, phone, prestation, message } = readFields(new FormData(e.currentTarget));
+    const { name, phone, vehicle, prestation, message } = readFields(
+      new FormData(e.currentTarget)
+    );
 
     setStatus('sending');
 
@@ -30,7 +40,7 @@ export default function ContactForm() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, phone, prestation, message }),
+        body: JSON.stringify({ name, phone, vehicle, prestation, message }),
       });
 
       if (!res.ok) throw new Error('send failed');
@@ -43,13 +53,16 @@ export default function ContactForm() {
   // Envoi via WhatsApp — pas de backend, ouvre wa.me avec le message pré-rempli.
   const handleWhatsapp = () => {
     if (!formRef.current) return;
-    const { name, phone, prestation, message } = readFields(new FormData(formRef.current));
+    const { name, phone, vehicle, prestation, message } = readFields(
+      new FormData(formRef.current)
+    );
 
     const lines = [
       `Bonjour, je souhaite un devis pour : ${prestation}`,
       `Nom : ${name}`,
       `Téléphone : ${phone}`,
-      message && `Véhicule / projet : ${message}`,
+      vehicle && `Véhicule : ${vehicle}`,
+      message && `Projet : ${message}`,
     ].filter(Boolean);
 
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
@@ -85,9 +98,20 @@ export default function ContactForm() {
 
   return (
     <form ref={formRef} onSubmit={handleEmailSubmit} className="flex flex-col gap-4">
-      <input required name="name" placeholder="Votre nom" className="glass-input" />
-      <input required name="phone" placeholder="Téléphone" className="glass-input" />
-      <select name="prestation" defaultValue={prestationOptions[0]} className="glass-input">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <input required name="name" placeholder="Nom" className="glass-input" />
+        <input required name="phone" placeholder="Téléphone" className="glass-input" />
+      </div>
+      <input
+        name="vehicle"
+        placeholder="Modèle du véhicule (ex. Golf 8)"
+        className="glass-input"
+      />
+      <select
+        name="prestation"
+        defaultValue={defaultPrestation ?? prestationOptions[0]}
+        className="glass-input"
+      >
         {prestationOptions.map((option) => (
           <option key={option} value={option} className="text-black">
             {option}
@@ -97,7 +121,7 @@ export default function ContactForm() {
       <textarea
         name="message"
         rows={3}
-        placeholder="Votre véhicule & votre projet…"
+        placeholder="Décrivez votre projet…"
         className="glass-input resize-y"
       />
 

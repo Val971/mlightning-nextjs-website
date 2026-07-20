@@ -1,17 +1,18 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-// Adresse qui reçoit les demandes de devis envoyées par le formulaire.
-const DEFAULT_TO_EMAIL = 'contact@mlightning-custom.fr';
+// Adresses qui reçoivent les demandes de devis envoyées par le formulaire.
+const DEFAULT_TO_EMAILS = ['contact@mlightning-custom.fr', 'mlightning180@gmail.com'];
 
 // "onboarding@resend.dev" fonctionne sans configuration (domaine bac à
 // sable fourni par Resend), pratique tant qu'aucun domaine n'est vérifié.
 // Voir .env.local.example pour passer à une adresse sur le vrai domaine.
-const DEFAULT_FROM_EMAIL = 'By Mlightning Custom <onboarding@resend.dev>';
+const DEFAULT_FROM_EMAIL = 'Mlightning Custom <onboarding@resend.dev>';
 
 type ContactPayload = {
   name?: string;
   phone?: string;
+  vehicle?: string;
   prestation?: string;
   message?: string;
 };
@@ -27,6 +28,7 @@ export async function POST(request: Request) {
 
   const name = body.name?.toString().trim() ?? '';
   const phone = body.phone?.toString().trim() ?? '';
+  const vehicle = body.vehicle?.toString().trim() ?? '';
   const prestation = body.prestation?.toString().trim() ?? '';
   const message = body.message?.toString().trim() ?? '';
 
@@ -45,14 +47,18 @@ export async function POST(request: Request) {
   }
 
   const resend = new Resend(apiKey);
-  const to = process.env.CONTACT_TO_EMAIL || DEFAULT_TO_EMAIL;
+  // CONTACT_TO_EMAIL peut lister plusieurs adresses séparées par une virgule.
+  const to = process.env.CONTACT_TO_EMAIL
+    ? process.env.CONTACT_TO_EMAIL.split(',').map((email) => email.trim())
+    : DEFAULT_TO_EMAILS;
   const from = process.env.CONTACT_FROM_EMAIL || DEFAULT_FROM_EMAIL;
 
   const lines = [
     `Prestation : ${prestation || 'Non précisée'}`,
     `Nom : ${name}`,
     `Téléphone : ${phone}`,
-    message && `Véhicule / projet : ${message}`,
+    vehicle && `Véhicule : ${vehicle}`,
+    message && `Projet : ${message}`,
   ].filter(Boolean);
 
   try {

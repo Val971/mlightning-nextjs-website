@@ -84,7 +84,7 @@ export default function Hero() {
               loop
               playsInline
               preload="metadata"
-              aria-label="Réalisation By Mlightning Custom en vidéo"
+              aria-label="Réalisation Mlightning Custom en vidéo"
             />
             <div
               className="absolute inset-0 pointer-events-none"

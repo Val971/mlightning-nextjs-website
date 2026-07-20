@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#07070c}
+  a{color:#fff;text-decoration:none}
+  h1,h2,h3,h4{font-family:'Syne',sans-serif;margin:0;line-height:1.03;font-weight:800}
+  p{margin:0}
+  input,textarea,select,button{font-family:inherit}
+  ::selection{background:#b7a6ff;color:#07070c}
+  ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#0d0d16}::-webkit-scrollbar-thumb{background:#26263a;border-radius:8px}
+  @keyframes holoShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  @media(max-width:900px){ .hero-grid{grid-template-columns:1fr!important} .tabs{overflow-x:auto} }
+  @media(max-width:760px){ .contact-grid{grid-template-columns:1fr!important} }
+</style>
+</helmet>
+
+<div style="{{ rootStyle }}">
+  <div style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden">
+    <div style="position:absolute;top:-15%;left:-10%;width:55vw;height:55vw;border-radius:50%;background:radial-gradient(circle,rgba(120,160,255,.16),transparent 62%);filter:blur(20px)"></div>
+    <div style="position:absolute;bottom:-20%;right:-12%;width:55vw;height:55vw;border-radius:50%;background:radial-gradient(circle,rgba(255,150,220,.14),transparent 62%);filter:blur(20px)"></div>
+  </div>
+
+  <div style="position:relative;z-index:1">
+
+  <!-- NAV -->
+  <header style="position:sticky;top:0;z-index:60;backdrop-filter:blur(14px);background:rgba(7,7,12,.72);border-bottom:1px solid rgba(255,255,255,.08)">
+    <nav style="max-width:1240px;margin:0 auto;padding:.8rem 1.5rem;display:flex;align-items:center;gap:1.5rem">
+      <a href="#top" style="display:flex;align-items:center"><img src="assets/logo-holo.png" alt="By Mlightning Custom" style="height:48px;width:auto;display:block"></a>
+      <span style="margin-left:auto;font-size:.85rem;color:rgba(255,255,255,.5)">Nos prestations</span>
+      <a href="#contact" style="{{ ctaStyle }}">Prendre rendez-vous</a>
+    </nav>
+  </header>
+
+  <!-- TABS -->
+  <div id="top" style="border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.015)">
+    <div class="tabs" style="max-width:1240px;margin:0 auto;padding:.8rem 1.5rem;display:flex;gap:.6rem">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+        <button onClick="{{ t.pick }}" style="{{ t.style }}">{{ t.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section style="max-width:1240px;margin:0 auto;padding:clamp(2.5rem,5vw,4.5rem) 1.5rem clamp(2rem,3vw,3rem)">
+    <div class="hero-grid" style="display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,4vw,3.5rem);align-items:center">
+      <div>
+        <span style="display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase">{{ svc.kicker }}</span>
+        <h1 style="font-size:clamp(2.4rem,5.5vw,4.2rem);margin:1.3rem 0 0;letter-spacing:-.02em">{{ svc.name }}</h1>
+        <p style="font-size:clamp(1.05rem,1.5vw,1.25rem);color:rgba(255,255,255,.72);max-width:48ch;margin-top:1.3rem;line-height:1.6">{{ svc.desc }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem">
+          <div style="padding:.75rem 1.1rem;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03)">
+            <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.45)">À partir de</div>
+            <div style="font-family:'Syne';font-weight:800;font-size:1.5rem;{{ holoText }}">{{ svc.price }}</div>
+          </div>
+          <div style="padding:.75rem 1.1rem;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03)">
+            <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.45)">Durée</div>
+            <div style="font-family:'Syne';font-weight:800;font-size:1.5rem">{{ svc.duration }}</div>
+          </div>
+          <div style="padding:.75rem 1.1rem;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03)">
+            <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.45)">Garantie</div>
+            <div style="font-family:'Syne';font-weight:800;font-size:1.5rem">{{ svc.warranty }}</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2rem">
+          <a href="#contact" style="{{ ctaStyle }}">Demander un devis gratuit</a>
+          <a href="tel:+33756946684" style="display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.6rem;border-radius:999px;font-weight:600;color:#fff;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.04)">📞 Nous appeler</a>
+        </div>
+      </div>
+      <div style="position:relative;aspect-ratio:4/5;border-radius:26px;overflow:hidden;border:1px solid rgba(255,255,255,.1);background-image:{{ svc.heroImg }};background-size:cover;background-position:center">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(7,7,12,.72))"></div>
+        <div style="position:absolute;left:1.3rem;bottom:1.3rem;font-size:.82rem;font-weight:600;color:rgba(255,255,255,.85)">✦ {{ svc.name }} · By Mlightning</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCLUS -->
+  <section style="max-width:1240px;margin:0 auto;padding:clamp(2rem,4vw,4rem) 1.5rem">
+    <span style="text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;font-weight:700;{{ holoText }}">Ce qui est inclus</span>
+    <h2 style="font-size:clamp(1.8rem,3.6vw,2.8rem);margin-top:.8rem;max-width:20ch">La prestation en détail</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.9rem;margin-top:2rem">
+      <sc-for list="{{ svc.features }}" as="f" hint-placeholder-count="6">
+        <div style="display:flex;align-items:flex-start;gap:.85rem;padding:1.1rem 1.2rem;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(255,255,255,.02)">
+          <span style="width:24px;height:24px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;color:#07070c;background:{{ grad }};margin-top:.1rem">✓</span>
+          <div>
+            <div style="font-weight:700;font-size:.98rem">{{ f.t }}</div>
+            <div style="font-size:.86rem;color:rgba(255,255,255,.55);margin-top:.2rem;line-height:1.45">{{ f.d }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section style="max-width:1240px;margin:0 auto;padding:clamp(1rem,2vw,2rem) 1.5rem clamp(2rem,4vw,4rem)">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem" class="svc-gal">
+      <sc-for list="{{ svc.gallery }}" as="g" hint-placeholder-count="3">
+        <figure style="margin:0;aspect-ratio:1/1;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.1);background-image:{{ g }};background-size:cover;background-position:center"></figure>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- BÉNÉFICES -->
+  <section style="border-top:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02)">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(3rem,5vw,5rem) 1.5rem">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem">
+        <sc-for list="{{ svc.benefits }}" as="b" hint-placeholder-count="3">
+          <div style="padding:1.8rem;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(255,255,255,.02)">
+            <div style="font-family:'Syne';font-weight:800;font-size:2rem;{{ holoText }}">{{ b.n }}</div>
+            <h3 style="font-size:1.2rem;margin:.6rem 0 .5rem">{{ b.t }}</h3>
+            <p style="color:rgba(255,255,255,.6);font-size:.92rem;line-height:1.55">{{ b.d }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="max-width:1240px;margin:0 auto;padding:clamp(3.5rem,6vw,6rem) 1.5rem">
+    <div class="contact-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,3.5rem);align-items:start">
+      <div>
+        <span style="text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;font-weight:700;{{ holoText }}">Contact</span>
+        <h2 style="font-size:clamp(2rem,4.4vw,3.2rem);margin-top:.8rem;max-width:16ch">Un projet {{ svc.name }} ?</h2>
+        <p style="color:rgba(255,255,255,.72);margin-top:1.1rem;line-height:1.6;max-width:42ch">Devis gratuit et conseils personnalisés selon votre véhicule. On répond généralement en moins d'une heure.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2rem">
+          <a href="tel:+33756946684" style="{{ ctaStyle }}">📞 +33 7 56 94 66 84</a>
+        </div>
+        <div style="display:flex;gap:.6rem;margin-top:1.2rem">
+          <sc-for list="{{ socials }}" as="so" hint-placeholder-count="3">
+            <a href="{{ so.url }}" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem">{{ so.label }}</a>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:clamp(1.6rem,3vw,2.4rem)">
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center;padding:1.5rem 0">
+            <div style="width:60px;height:60px;border-radius:50%;margin:0 auto 1.1rem;display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#07070c;background:{{ grad }}">✓</div>
+            <h3 style="font-size:1.5rem">Message envoyé !</h3>
+            <p style="color:rgba(255,255,255,.65);margin-top:.6rem;line-height:1.5">On vous recontacte très vite pour votre rendez-vous {{ svc.name }}.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:.9rem">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.9rem">
+              <input required placeholder="Nom" style="{{ inputStyle }}">
+              <input required placeholder="Téléphone" style="{{ inputStyle }}">
+            </div>
+            <input placeholder="Modèle du véhicule (ex. Golf 8)" style="{{ inputStyle }}">
+            <select style="{{ inputStyle }}">
+              <sc-for list="{{ selectOptions }}" as="op" hint-placeholder-count="5">
+                <option selected="{{ op.selected }}">{{ op.label }}</option>
+              </sc-for>
+            </select>
+            <textarea rows="3" placeholder="Décrivez votre projet…" style="{{ inputStyle }};resize:vertical"></textarea>
+            <button type="submit" style="{{ ctaStyle }};border:none;cursor:pointer;justify-content:center">Demander mon devis gratuit</button>
+            <p style="text-align:center;font-size:.76rem;color:rgba(255,255,255,.45)">Réponse sous 1 h · Sans engagement</p>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top:1px solid rgba(255,255,255,.08)">
+    <div style="max-width:1240px;margin:0 auto;padding:2.5rem 1.5rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center">
+      <img src="assets/logo-holo.png" alt="By Mlightning Custom" style="height:44px">
+      <span style="font-size:.82rem;color:rgba(255,255,255,.45)">© 2026 By Mlightning Custom · Val-d'Oise (95) · Île-de-France</span>
+    </div>
+  </footer>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1240, &quot;height&quot;: 900 }
+}">
+class Component extends DCLogic {
+  state = { service: 0, sent: false };
+
+  uimg = (id, fb) => `url('https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=70'),linear-gradient(135deg,${fb},#12121e)`;
+
+  data = [
+    {
+      key:'led', label:'LED d\u2019ambiance', kicker:'Éclairage intérieur', name:'LED d\u2019ambiance',
+      price:'190 €', duration:'2–4 h', warranty:'2 ans',
+      desc:"Un rétroéclairage multicolore intégré discrètement dans votre habitacle, piloté depuis votre téléphone. Créez l\u2019atmosphère parfaite, de jour comme de nuit.",
+      heroImg:['1518987048-93e29699e79a','#3a1a4a'],
+      features:[
+        {t:'Bandeaux RGB haute densité',d:'16 millions de couleurs, luminosité réglable.'},
+        {t:'Pilotage par application',d:'Contrôle depuis votre smartphone, scènes personnalisées.'},
+        {t:'Intégration invisible',d:'Câblage caché, finition d\u2019origine préservée.'},
+        {t:'Synchronisation musique',d:'Les LED réagissent au rythme de votre son.'},
+        {t:'Zones multiples',d:'Portes, tableau de bord, plancher, plafond.'},
+        {t:'Branchement sécurisé',d:'Raccordement propre sans risque pour l\u2019électronique.'}
+      ],
+      benefits:[
+        {n:'01',t:'Ambiance sur-mesure',d:'Une lumière qui colle à votre humeur et à votre style.'},
+        {n:'02',t:'Effet waouh garanti',d:'Un intérieur qui ne passe pas inaperçu, jour et nuit.'},
+        {n:'03',t:'Sans compromis',d:'Aucune modification visible ni trace sur l\u2019habitacle.'}
+      ],
+      gallery:[['1518987048-93e29699e79a','#3a1a4a'],['1449965408869-eaa3f722e40d','#2a2a3a'],['1552519507-da3b142c6e3d','#1a2a3a']]
+    },
+    {
+      key:'ciel', label:'Ciel étoilé', kicker:'Pavillon fibre optique', name:'Ciel étoilé',
+      price:'490 €', duration:'1 journée', warranty:'2 ans',
+      desc:"Des centaines de points lumineux en fibre optique intégrés à votre pavillon pour recréer un vrai ciel scintillant. L\u2019expérience premium par excellence.",
+      heroImg:['1451187580459-43490279c0fa','#0a1030'],
+      features:[
+        {t:'Fibres optiques HD',d:'Densité et scintillement dignes d\u2019un véhicule de luxe.'},
+        {t:'Effet étoile filante',d:'Option météores animés pour un rendu spectaculaire.'},
+        {t:'Ciel sur-mesure',d:'Densité et disposition adaptées à votre pavillon.'},
+        {t:'Générateur silencieux',d:'Boîtier compact et totalement invisible.'},
+        {t:'Couleur réglable',d:'Blanc chaud, froid ou teintes au choix.'},
+        {t:'Pose soignée',d:'Ciel de toit reposé proprement, sans plis.'}
+      ],
+      benefits:[
+        {n:'01',t:'Effet immersif',d:'Une véritable voûte étoilée au-dessus de vos passagers.'},
+        {n:'02',t:'Signature premium',d:'Le détail qui transforme l\u2019habitacle en salon.'},
+        {n:'03',t:'Fait main',d:'Chaque point est posé et vérifié individuellement.'}
+      ],
+      gallery:[['1451187580459-43490279c0fa','#0a1030'],['1465101162946-4377e57745c3','#0a0a2a'],['1419242902214-272b3f66ee7a','#101040']]
+    },
+    {
+      key:'carplay', label:'CarPlay', kicker:'Multimédia connecté', name:'Apple CarPlay',
+      price:'250 €', duration:'2–3 h', warranty:'2 ans',
+      desc:"Accédez à vos apps, votre musique, vos itinéraires et vos contacts directement sur l\u2019écran de bord. Sans fil ou filaire, sur la plupart des véhicules.",
+      heroImg:['1449965408869-eaa3f722e40d','#2a2a3a'],
+      features:[
+        {t:'CarPlay & Android Auto',d:'Compatibilité iOS et Android.'},
+        {t:'Sans fil',d:'Connexion automatique dès que vous montez à bord.'},
+        {t:'Interface d\u2019origine',d:'Intégré à votre écran, sans boîtier apparent.'},
+        {t:'Navigation & musique',d:'Waze, Maps, Spotify, appels et messages.'},
+        {t:'Caméra de recul',d:'Conservation ou ajout de la caméra.'},
+        {t:'Mise à jour',d:'Système évolutif et paramétré pour vous.'}
+      ],
+      benefits:[
+        {n:'01',t:'Plus de sécurité',d:'Gardez les mains sur le volant, tout à portée de voix.'},
+        {n:'02',t:'Votre iPhone à bord',d:'Toutes vos apps favorites sur le grand écran.'},
+        {n:'03',t:'Installation propre',d:'Aucun câble visible, rendu 100 % d\u2019origine.'}
+      ],
+      gallery:[['1449965408869-eaa3f722e40d','#2a2a3a'],['1503376780353-7e6692767b70','#2a1a2a'],['1494976388531-d1058494cdd8','#1a1a2e']]
+    },
+    {
+      key:'volant', label:'Volants sur-mesure', kicker:'Sellerie & finition', name:'Volants sur-mesure',
+      price:'Sur devis', duration:'3–7 jours', warranty:'2 ans',
+      desc:"Votre volant recréé avec des matériaux premium : cuir nappa, alcantara, surpiqûres personnalisées, inserts carbone. Confort et esthétique incomparables.",
+      heroImg:['1503376780353-7e6692767b70','#2a1a2a'],
+      features:[
+        {t:'Cuir nappa & alcantara',d:'Matériaux haut de gamme au toucher premium.'},
+        {t:'Surpiqûres au choix',d:'Couleur et motif personnalisés à votre goût.'},
+        {t:'Inserts carbone',d:'Touches sport et modernes en option.'},
+        {t:'Repère 12h',d:'Bande centrale contrastée type sport.'},
+        {t:'Chauffage conservé',d:'Volant chauffant préservé si équipé.'},
+        {t:'Airbag réinstallé',d:'Remontage sécurisé dans les règles.'}
+      ],
+      benefits:[
+        {n:'01',t:'Prise en main unique',d:'Un volant pensé pour votre confort et votre style.'},
+        {n:'02',t:'Pièce d\u2019exception',d:'Une finition qui valorise tout l\u2019habitacle.'},
+        {n:'03',t:'Savoir-faire',d:'Travail de sellerie réalisé à la main.'}
+      ],
+      gallery:[['1503376780353-7e6692767b70','#2a1a2a'],['1583121274602-3e2820c69888','#2a2a3a'],['1493238792000-8113da705763','#0a1030']]
+    },
+    {
+      key:'carrosserie', label:'Carrosserie & vitres teintées', kicker:'Extérieur & vitrage', name:'Accessoires de carrosserie & vitres teintées',
+      price:'Sur devis', duration:'2 h – 2 jours', warranty:'2 ans',
+      desc:"Sublimez l\u2019extérieur de votre véhicule : vitres teintées sur-mesure et accessoires de carrosserie posés proprement pour un look affirmé et plus d\u2019intimité à bord.",
+      heroImg:['1552519507-da3b142c6e3d','#1a2a3a'],
+      features:[
+        {t:'Films teintés homologués',d:'Plusieurs niveaux d\u2019opacité, pose sans bulles.'},
+        {t:'Rejet de chaleur & UV',d:'Habitacle plus frais, protection contre le soleil.'},
+        {t:'Accessoires carrosserie',d:'Baguettes, becquets, coques rétros, jupes.'},
+        {t:'Films de protection',d:'Zones sensibles protégées des rayures.'},
+        {t:'Pose garantie',d:'Découpe précise sur-mesure, finition d\u2019origine.'},
+        {t:'Conformité',d:'Teintes conformes à la réglementation en vigueur.'}
+      ],
+      benefits:[
+        {n:'01',t:'Style affirmé',d:'Un extérieur qui se démarque et valorise le véhicule.'},
+        {n:'02',t:'Confort & intimité',d:'Moins de chaleur, plus de discrétion à bord.'},
+        {n:'03',t:'Pose soignée',d:'Travail net, sans bulles ni décollement.'}
+      ],
+      gallery:[['1552519507-da3b142c6e3d','#1a2a3a'],['1511919884226-fd3cad34687c','#1a2a3a'],['1550355291-bbee04a92027','#2a1a2a']]
+    }
+  ];
+
+  pick = (i) => () => this.setState({ service: i, sent: false });
+  submit = (e) => { e.preventDefault(); this.setState({ sent: true }); };
+
+  renderVals() {
+    const grad = 'linear-gradient(115deg,#a0f0ff,#b7a6ff,#ff9ecb,#ffd39e,#a7ffd8)';
+    const holoText = `background:${grad};background-size:220% 220%;animation:holoShift 7s ease infinite;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent`;
+    const rootStyle = { background:'#07070c', color:'#fff', minHeight:'100vh', overflowX:'hidden', fontFamily:"'Manrope',system-ui,sans-serif", position:'relative' };
+    const ctaStyle = { display:'inline-flex', alignItems:'center', gap:'.5rem', padding:'.9rem 1.6rem', borderRadius:'999px', fontWeight:700, color:'#07070c', whiteSpace:'nowrap', background:grad, backgroundSize:'200% 200%', animation:'holoShift 7s ease infinite', boxShadow:'0 8px 30px -8px rgba(160,180,255,.5)' };
+    const inputStyle = { padding:'.85rem 1rem', borderRadius:'12px', border:'1px solid rgba(255,255,255,.14)', background:'rgba(255,255,255,.04)', color:'#fff', fontSize:'.95rem', width:'100%' };
+
+    const idx = this.state.service;
+    const d = this.data[idx];
+    const svc = {
+      ...d,
+      heroImg: this.uimg(d.heroImg[0], d.heroImg[1]),
+      gallery: d.gallery.map(g => this.uimg(g[0], g[1]))
+    };
+
+    const tabs = this.data.map((s, i) => ({
+      label: s.label, pick: this.pick(i),
+      style: i === idx
+        ? { cursor:'pointer', whiteSpace:'nowrap', padding:'.6rem 1.1rem', borderRadius:'999px', fontWeight:700, fontSize:'.9rem', border:'1px solid transparent', color:'#07070c', background:grad, backgroundSize:'200% 200%', animation:'holoShift 7s ease infinite' }
+        : { cursor:'pointer', whiteSpace:'nowrap', padding:'.6rem 1.1rem', borderRadius:'999px', fontWeight:600, fontSize:'.9rem', border:'1px solid rgba(255,255,255,.14)', color:'rgba(255,255,255,.8)', background:'rgba(255,255,255,.03)' }
+    }));
+
+    const selectOptions = this.data.map(s => ({ label: s.name, selected: s.key === d.key }));
+
+    const socials = [
+      { label:'IG', url:'https://www.instagram.com/mlightning_custom/' },
+      { label:'TT', url:'https://www.tiktok.com/@mlightning95' },
+      { label:'SC', url:'https://www.snapchat.com/add/mlightning95' }
+    ];
+
+    return {
+      rootStyle, holoText, ctaStyle, inputStyle, grad,
+      svc, tabs, selectOptions, socials,
+      submit: this.submit, sent: this.state.sent, notSent: !this.state.sent
+    };
+  }
+}
+</script>
+</body>
+</html>

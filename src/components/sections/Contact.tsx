@@ -4,7 +4,17 @@ import { socials } from '@/data/socials';
 import Reveal from '@/components/ui/Reveal';
 import ContactForm from './ContactForm';
 
-export default function Contact() {
+type ContactProps = {
+  title?: string;
+  description?: string;
+  defaultPrestation?: string;
+};
+
+export default function Contact({
+  title = 'Parlons de votre projet',
+  description = "Un devis gratuit, des conseils personnalisés. On répond généralement en moins d'une heure.",
+  defaultPrestation,
+}: ContactProps) {
   return (
     <section
       id="contact"
@@ -32,11 +42,10 @@ export default function Contact() {
           <div className="relative grid grid-cols-1 min-[901px]:grid-cols-2 gap-10 items-center">
             <div>
               <h2 className="text-[clamp(2.1rem,4.6vw,3.6rem)] tracking-[-.01em]">
-                Parlons de votre projet
+                {title}
               </h2>
               <p className="text-white/[.78] mt-[1.1rem] leading-[1.6] max-w-[42ch]">
-                Un devis gratuit, des conseils personnalisés. On répond
-                généralement en moins d&apos;une heure.
+                {description}
               </p>
               <div className="flex flex-wrap gap-[.9rem] mt-8 items-center">
                 <a href={phoneHref} className="btn-holo">
@@ -66,7 +75,7 @@ export default function Contact() {
             </div>
 
             <div className="bg-[rgba(7,7,12,.55)] backdrop-blur-[6px] border border-white/[.12] rounded-2xl p-4 sm:p-8">
-              <ContactForm />
+              <ContactForm defaultPrestation={defaultPrestation} />
             </div>
           </div>
         </div>

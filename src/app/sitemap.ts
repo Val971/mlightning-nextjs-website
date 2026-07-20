@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { services } from '@/data/services';
 
 const siteUrl = 'https://mlightning-custom.fr';
 
@@ -12,6 +13,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 1,
     },
+    ...services.map((service) => ({
+      url: `${siteUrl}/services/${service.slug}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
     {
       url: `${siteUrl}/mentions-legales`,
       lastModified,

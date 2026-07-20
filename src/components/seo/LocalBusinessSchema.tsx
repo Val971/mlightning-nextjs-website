@@ -31,7 +31,7 @@ export default async function LocalBusinessSchema() {
     '@context': 'https://schema.org',
     '@type': 'AutomotiveBusiness',
     '@id': `${siteUrl}/#business`,
-    name: 'By Mlightning Custom',
+    name: 'Mlightning Custom',
     image: `${siteUrl}/images/og-image.jpg`,
     logo: `${siteUrl}/images/logo-holo-cropped.png`,
     url: siteUrl,

@@ -26,11 +26,14 @@ export const socials: Social[] = [
   },
 ];
 
+// Doit correspondre exactement au champ `name` de src/data/services.ts pour
+// que ContactForm puisse présélectionner la bonne prestation sur chaque page
+// service (voir la prop `defaultPrestation`).
 export const prestationOptions = [
   "LED d'ambiance",
   'Ciel étoilé',
-  'CarPlay',
-  'Volant sur-mesure',
-  'Déblocage option VAG',
+  'Apple CarPlay',
+  'Volants sur-mesure',
+  'Accessoires de carrosserie & vitres teintées',
   'Autre',
 ];

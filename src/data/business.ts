@@ -19,7 +19,7 @@ export const googleReviewsUrl = 'https://www.google.com/search?sca_esv=630f4fbcc
 // professionnel avant mise en ligne définitive (voir TODO ci-dessous).
 export const legalEntity = {
   name: 'MLIGHTNING CUSTOM',
-  tradeName: 'By Mlightning Custom',
+  tradeName: 'Mlightning Custom',
   // TODO: forme juridique (auto-entrepreneur, EI, SASU...) à confirmer.
   legalForm: '', // ex: "Entreprise Individuelle"
   addressLines: address.lines,

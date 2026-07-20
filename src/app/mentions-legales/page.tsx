@@ -6,7 +6,7 @@ import { legalEntity, host } from '@/data/business';
 export const metadata: Metadata = {
   title: 'Mentions légales',
   description:
-    "Mentions légales du site By Mlightning Custom : éditeur, hébergeur et informations légales.",
+    "Mentions légales du site Mlightning Custom : éditeur, hébergeur et informations légales.",
   alternates: {
     canonical: '/mentions-legales',
   },
@@ -17,7 +17,7 @@ export default function MentionsLegalesPage() {
     <LegalPage title="Mentions légales" updatedAt="19 juillet 2026">
       <LegalSection title="Éditeur du site">
         <p>
-          Le site By Mlightning Custom est édité par {legalEntity.name}
+          Le site Mlightning Custom est édité par {legalEntity.name}
           {legalEntity.legalForm ? `, ${legalEntity.legalForm}` : ''}, exerçant
           sous le nom commercial « {legalEntity.tradeName} ».
         </p>

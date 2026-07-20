@@ -3,14 +3,7 @@ import Link from 'next/link';
 import { phoneHref, phoneNumber } from '@/data/nav';
 import { socials } from '@/data/socials';
 import { address, openingHours } from '@/data/business';
-
-const footerServices = [
-  "LED d'ambiance",
-  'Ciel étoilé',
-  'CarPlay',
-  'Volants sur-mesure',
-  'Déblocage VAG',
-];
+import { services } from '@/data/services';
 
 export default function Footer() {
   return (
@@ -19,7 +12,7 @@ export default function Footer() {
         <div className="max-w-[34ch]">
           <Image
             src="/images/logo-holo-cropped.png"
-            alt="By Mlightning Custom"
+            alt="Mlightning Custom"
             height={150}
             width={267}
             className="mb-5 drop-shadow-[0_0_18px_rgba(183,166,255,.4)]"
@@ -33,9 +26,13 @@ export default function Footer() {
         <div>
           <h4 className="text-base mb-4 text-white">Services</h4>
           <div className="flex flex-col gap-[.6rem] text-[.92rem] text-white/60">
-            {footerServices.map((label) => (
-              <Link key={label} href="/#services" className="text-white/60 hover:text-white">
-                {label}
+            {services.map((service) => (
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className="text-white/60 hover:text-white"
+              >
+                {service.label}
               </Link>
             ))}
           </div>
@@ -92,7 +89,7 @@ export default function Footer() {
 
       <div className="border-t border-white/[.08]">
         <div className="max-w-content mx-auto px-6 py-[1.4rem] flex flex-wrap justify-between gap-4 text-[.82rem] text-white/[.45]">
-          <span>© 2026 By Mlightning Custom. Tous droits réservés.</span>
+          <span>© 2026 Mlightning Custom. Tous droits réservés.</span>
           <span className="flex gap-2">
             <Link href="/mentions-legales" className="hover:text-white/70 underline">
               Mentions légales
