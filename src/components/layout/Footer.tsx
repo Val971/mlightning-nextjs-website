@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { phoneHref, phoneNumber } from '@/data/nav';
 import { socials } from '@/data/socials';
-import { address, openingHours } from '@/data/business';
+import { address, openingHours, host } from '@/data/business';
 import { services } from '@/data/services';
 
 export default function Footer() {
@@ -101,6 +101,21 @@ export default function Footer() {
             >
               Confidentialité
             </Link>
+          </span>
+          <span className="flex items-center gap-[.35rem]">
+            Made with
+            <span aria-hidden className="text-[#ff5c7a]">
+              ❤
+            </span>
+            by
+            <a
+              href={host.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white/70 underline"
+            >
+              {host.name}
+            </a>
           </span>
         </div>
       </div>

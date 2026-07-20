@@ -1,6 +1,7 @@
 import { address, openingHours } from '@/data/business';
 import { phoneHref } from '@/data/nav';
 import { socials } from '@/data/socials';
+import { serviceAreas } from '@/data/coverage';
 import { getGoogleReviews } from '@/lib/googleReviews';
 
 const siteUrl = 'https://mlightning-custom.fr';
@@ -59,6 +60,12 @@ export default async function LocalBusinessSchema() {
       closes,
     },
     sameAs: socials.map((s) => s.url),
+    // Communes réellement desservies (Val-d'Oise + Oise limitrophe) — aide
+    // Google à associer les recherches géolocalisées à notre fiche.
+    areaServed: [...serviceAreas.valdoise, ...serviceAreas.oise].map((city) => ({
+      '@type': 'City',
+      name: city,
+    })),
     // Uniquement si des avis Google réels sont branchés (voir
     // .env.local.example) — jamais de note fabriquée.
     ...(google && google.userRatingCount > 0

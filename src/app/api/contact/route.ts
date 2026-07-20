@@ -1,13 +1,15 @@
 import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import { MailerSend, EmailParams, Sender, Recipient } from 'mailersend';
 
 // Adresses qui reçoivent les demandes de devis envoyées par le formulaire.
 const DEFAULT_TO_EMAILS = ['contact@mlightning-custom.fr', 'mlightning180@gmail.com'];
 
-// "onboarding@resend.dev" fonctionne sans configuration (domaine bac à
-// sable fourni par Resend), pratique tant qu'aucun domaine n'est vérifié.
-// Voir .env.local.example pour passer à une adresse sur le vrai domaine.
-const DEFAULT_FROM_EMAIL = 'Mlightning Custom <onboarding@resend.dev>';
+// Contrairement à Resend, MailerSend n'a pas d'adresse "bac à sable"
+// universelle (onboarding@resend.dev). Il faut soit vérifier
+// mlightning-custom.fr dans MailerSend, soit utiliser le domaine d'essai
+// fourni à la création du compte (Domaines > domaine de test, du type
+// "xxxxx.mlsender.net"). Voir .env.local.example.
+const DEFAULT_FROM_EMAIL = 'Mlightning Custom <MS_XXXXXX@xxxxx.mlsender.net>';
 
 type ContactPayload = {
   name?: string;
@@ -16,6 +18,16 @@ type ContactPayload = {
   prestation?: string;
   message?: string;
 };
+
+// "Nom <email>" -> { name, email } — MailerSend attend les deux séparément
+// (contrairement à Resend qui acceptait la chaîne complète).
+function parseAddress(value: string): { name?: string; email: string } {
+  const match = value.match(/^(.*)<(.+)>$/);
+  if (match) {
+    return { name: match[1].trim() || undefined, email: match[2].trim() };
+  }
+  return { email: value.trim() };
+}
 
 export async function POST(request: Request) {
   let body: ContactPayload;
@@ -36,22 +48,26 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Nom et téléphone requis.' }, { status: 400 });
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = process.env.MAILERSEND_API_KEY;
   if (!apiKey) {
     // Pas de clé configurée : on log côté serveur pour le débogage, le
     // front-end proposera d'utiliser WhatsApp à la place.
     console.error(
-      "RESEND_API_KEY manquante — impossible d'envoyer l'email du formulaire de contact."
+      "MAILERSEND_API_KEY manquante — impossible d'envoyer l'email du formulaire de contact."
     );
     return NextResponse.json({ error: 'Service email non configuré.' }, { status: 500 });
   }
 
-  const resend = new Resend(apiKey);
+  const mailerSend = new MailerSend({ apiKey });
+
   // CONTACT_TO_EMAIL peut lister plusieurs adresses séparées par une virgule.
-  const to = process.env.CONTACT_TO_EMAIL
+  const toEmails = process.env.CONTACT_TO_EMAIL
     ? process.env.CONTACT_TO_EMAIL.split(',').map((email) => email.trim())
     : DEFAULT_TO_EMAILS;
-  const from = process.env.CONTACT_FROM_EMAIL || DEFAULT_FROM_EMAIL;
+  const from = parseAddress(process.env.CONTACT_FROM_EMAIL || DEFAULT_FROM_EMAIL);
+
+  const sender = new Sender(from.email, from.name);
+  const recipients = toEmails.map((email) => new Recipient(email));
 
   const lines = [
     `Prestation : ${prestation || 'Non précisée'}`,
@@ -61,22 +77,17 @@ export async function POST(request: Request) {
     message && `Projet : ${message}`,
   ].filter(Boolean);
 
+  const emailParams = new EmailParams()
+    .setFrom(sender)
+    .setTo(recipients)
+    .setSubject(`Nouvelle demande de devis — ${prestation || 'via le site'}`)
+    .setText(lines.join('\n'));
+
   try {
-    const { error } = await resend.emails.send({
-      from,
-      to,
-      subject: `Nouvelle demande de devis — ${prestation || 'via le site'}`,
-      text: lines.join('\n'),
-    });
-
-    if (error) {
-      console.error('Resend a refusé l\'envoi :', error);
-      return NextResponse.json({ error: "L'envoi a échoué." }, { status: 502 });
-    }
-
+    await mailerSend.email.send(emailParams);
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error('Échec de l\'envoi email du formulaire de contact :', err);
+    console.error("Échec de l'envoi email du formulaire de contact :", err);
     return NextResponse.json({ error: "L'envoi a échoué." }, { status: 500 });
   }
 }

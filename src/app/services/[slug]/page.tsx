@@ -7,6 +7,7 @@ import Reveal from '@/components/ui/Reveal';
 import Contact from '@/components/sections/Contact';
 import { phoneHref } from '@/data/nav';
 import { services } from '@/data/services';
+import { serviceAreas, serviceBrands } from '@/data/coverage';
 
 const siteUrl = 'https://mlightning-custom.fr';
 
@@ -244,6 +245,51 @@ export default async function ServicePage({ params }: Props) {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Zone d'intervention & véhicules — aide Google à faire correspondre
+          les recherches précises (marque + ville) à cette page. */}
+      <section className="max-w-content mx-auto px-6 py-[clamp(2rem,4vw,4rem)]">
+        <Reveal>
+          <HoloText
+            as="span"
+            className="uppercase tracking-[.14em] text-[.8rem] font-bold block"
+          >
+            Où et sur quels véhicules
+          </HoloText>
+          <h2 className="text-[clamp(1.6rem,3vw,2.2rem)] mt-[.8rem] max-w-[28ch]">
+            {service.name} : toutes marques, tout le Val-d&apos;Oise
+          </h2>
+          <p className="text-white/60 text-[.95rem] max-w-[68ch] mt-[.9rem] leading-[1.6]">
+            Nous installons {service.name.toLowerCase()} sur toutes les
+            marques — Audi, Mercedes-Benz, Volkswagen, BMW, Peugeot, Renault,
+            Citroën, Ford et bien d&apos;autres. Basés à Persan, nous
+            intervenons dans tout le Val-d&apos;Oise (95) et les villes
+            limitrophes de l&apos;Oise.
+          </p>
+        </Reveal>
+
+        <div className="mt-6 flex flex-wrap gap-[.55rem]">
+          {serviceBrands.map((brand) => (
+            <span
+              key={brand}
+              className="px-[.9rem] py-[.45rem] rounded-pill border border-white/[.12] bg-white/[.03] text-[.82rem] font-semibold text-white/75"
+            >
+              {brand}
+            </span>
+          ))}
+        </div>
+
+        <div className="mt-4 flex flex-wrap gap-[.55rem]">
+          {[...serviceAreas.valdoise, ...serviceAreas.oise].map((city) => (
+            <span
+              key={city}
+              className="px-[.85rem] py-[.4rem] rounded-pill border border-white/[.08] bg-white/[.015] text-[.78rem] text-white/55"
+            >
+              {city}
+            </span>
+          ))}
         </div>
       </section>
 
