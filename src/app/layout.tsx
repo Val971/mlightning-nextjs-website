@@ -21,7 +21,7 @@ const manrope = Manrope({
 const siteUrl = 'https://mlightning-custom.fr';
 const siteName = 'Mlightning Custom';
 const description =
-  "Customisation intérieur auto à Persan (95) : LED d'ambiance, ciel étoilé, Apple CarPlay, volants sur-mesure, vitres teintées. Devis gratuit, réponse en 1h.";
+  "Customisation intérieur auto à Persan (95) : LED d'ambiance, ciel étoilé, Apple CarPlay, volants sur-mesure, vitres teintées. Devis gratuit, réponse sous 24h.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

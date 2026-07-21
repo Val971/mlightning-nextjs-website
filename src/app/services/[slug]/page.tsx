@@ -312,7 +312,7 @@ export default async function ServicePage({ params }: Props) {
 
       <Contact
         title={`Un projet ${service.name} ?`}
-        description="Devis gratuit et conseils personnalisés selon votre véhicule. On répond généralement en moins d'une heure."
+        description="Devis gratuit et conseils personnalisés selon votre véhicule. On répond généralement sous 24h."
         defaultPrestation={service.name}
       />
     </>

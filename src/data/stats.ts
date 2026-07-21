@@ -5,6 +5,6 @@ export type Stat = {
 
 export const stats: Stat[] = [
   { value: '6 ans+', label: "d'expérience" },
-  { value: '500+', label: 'véhicules customisés' },
-  { value: '< 1 h', label: 'délai de réponse' },
+  { value: '200+', label: 'véhicules customisés' },
+  { value: '< 24 h', label: 'délai de réponse' },
 ];

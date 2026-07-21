@@ -12,7 +12,7 @@ type ContactProps = {
 
 export default function Contact({
   title = 'Parlons de votre projet',
-  description = "Un devis gratuit, des conseils personnalisés. On répond généralement en moins d'une heure.",
+  description = "Un devis gratuit, des conseils personnalisés. On répond généralement sous 24h.",
   defaultPrestation,
 }: ContactProps) {
   return (
