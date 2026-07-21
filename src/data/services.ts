@@ -48,7 +48,7 @@ export const services: Service[] = [
     name: "LED d'ambiance",
     price: 'Sur devis',
     duration: '2–4 h',
-    warranty: '2 ans',
+    warranty: '1 ans',
     desc: "Un rétroéclairage multicolore intégré discrètement dans votre habitacle, piloté depuis votre téléphone. Créez l'atmosphère parfaite, de jour comme de nuit.",
     metaDescription:
       "Installation LED d'ambiance sur-mesure à Persan (95) : RGB piloté par app, pose invisible. À partir de 190 €, 2-4 h, garantie 2 ans. Devis gratuit.",
@@ -80,7 +80,7 @@ export const services: Service[] = [
     name: 'Ciel étoilé',
     price: 'Sur devis',
     duration: '1 journée',
-    warranty: '2 ans',
+    warranty: '1 ans',
     desc: "Des centaines de points lumineux en fibre optique intégrés à votre pavillon pour recréer un vrai ciel scintillant. L'expérience premium par excellence.",
     metaDescription:
       'Ciel étoilé par fibre optique à Persan (95) : centaines de points scintillants, pose soignée. 490 €, 1 journée, garantie 2 ans. Devis gratuit.',
@@ -112,7 +112,7 @@ export const services: Service[] = [
     name: 'Apple CarPlay',
     price: 'Sur devis',
     duration: '2–3 h',
-    warranty: '2 ans',
+    warranty: '1 ans',
     desc: "Accédez à vos apps, votre musique, vos itinéraires et vos contacts directement sur l'écran de bord. Sans fil ou filaire, sur la plupart des véhicules.",
     metaDescription:
       "Apple CarPlay & Android Auto sans fil à Persan (95) : navigation, musique, appels mains libres. 250 €, 2-3 h, garantie 2 ans. Devis gratuit.",
@@ -144,7 +144,7 @@ export const services: Service[] = [
     name: 'Volants sur-mesure',
     price: 'Sur devis',
     duration: '3–7 jours',
-    warranty: '2 ans',
+    warranty: '1 ans',
     desc: "Votre volant recréé avec des matériaux premium : cuir nappa, alcantara, surpiqûres personnalisées, inserts carbone. Confort et esthétique incomparables.",
     metaDescription:
       'Rénovation de volant sur-mesure à Persan (95) : cuir nappa, alcantara, surpiqûres, inserts carbone. Sur devis, 3-7 jours, garantie 2 ans.',
@@ -176,7 +176,7 @@ export const services: Service[] = [
     name: 'Accessoires de carrosserie & vitres teintées',
     price: 'Sur devis',
     duration: '2 h – 2 jours',
-    warranty: '2 ans',
+    warranty: '1 ans',
     desc: "Sublimez l'extérieur de votre véhicule : vitres teintées sur-mesure et accessoires de carrosserie posés proprement pour un look affirmé et plus d'intimité à bord.",
     metaDescription:
       'Vitres teintées & accessoires de carrosserie à Persan (95) : pose homologuée, protection chaleur/UV. Sur devis, 2h-2j, garantie 2 ans.',
