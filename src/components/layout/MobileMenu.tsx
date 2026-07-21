@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { navLinks, phoneHref } from '@/data/nav';
+import { navLinks } from '@/data/nav';
 import { services } from '@/data/services';
 
 type MobileMenuProps = {
@@ -118,13 +118,13 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
           )}
         </div>
 
-        <a
-          href={phoneHref}
+        <Link
+          href="/#contact"
           onClick={onClose}
           className="btn-holo mt-auto text-center justify-center"
         >
           Prendre rendez-vous
-        </a>
+        </Link>
       </div>
     </div>
   );

@@ -52,9 +52,9 @@ export const services: Service[] = [
     desc: "Un rétroéclairage multicolore intégré discrètement dans votre habitacle, piloté depuis votre téléphone. Créez l'atmosphère parfaite, de jour comme de nuit.",
     metaDescription:
       "Installation LED d'ambiance sur-mesure à Persan (95) : RGB piloté par app, pose invisible. À partir de 190 €, 2-4 h, garantie 2 ans. Devis gratuit.",
-    heroImage: '/images/carousel2.png',
+    heroImage: '/images/carousel2.jpg',
     gallery: [
-      '/images/carousel2.png',
+      '/images/carousel2.jpg',
       '/images/PHOTO-2024-11-07-21-38-48.jpg',
       '/images/PHOTO-2024-11-07-21-41-57.jpg',
     ],
@@ -84,9 +84,9 @@ export const services: Service[] = [
     desc: "Des centaines de points lumineux en fibre optique intégrés à votre pavillon pour recréer un vrai ciel scintillant. L'expérience premium par excellence.",
     metaDescription:
       'Ciel étoilé par fibre optique à Persan (95) : centaines de points scintillants, pose soignée. 490 €, 1 journée, garantie 2 ans. Devis gratuit.',
-    heroImage: '/images/carousel1.png',
+    heroImage: '/images/carousel1.jpg',
     gallery: [
-      '/images/carousel1.png',
+      '/images/carousel1.jpg',
       '/images/PHOTO-2024-11-07-21-38-48.jpg',
       '/images/PHOTO-2024-11-07-21-41-57-2.jpg',
     ],
@@ -116,9 +116,9 @@ export const services: Service[] = [
     desc: "Accédez à vos apps, votre musique, vos itinéraires et vos contacts directement sur l'écran de bord. Sans fil ou filaire, sur la plupart des véhicules.",
     metaDescription:
       "Apple CarPlay & Android Auto sans fil à Persan (95) : navigation, musique, appels mains libres. 250 €, 2-3 h, garantie 2 ans. Devis gratuit.",
-    heroImage: '/images/carousel3.png',
+    heroImage: '/images/carousel3.jpg',
     gallery: [
-      '/images/carousel3.png',
+      '/images/carousel3.jpg',
       '/images/PHOTO-2024-11-07-21-41-57.jpg',
       '/images/PHOTO-2024-11-07-21-41-57-2.jpg',
     ],
@@ -151,7 +151,7 @@ export const services: Service[] = [
     heroImage: '/images/PHOTO-2024-11-07-21-41-57.jpg',
     gallery: [
       '/images/PHOTO-2024-11-07-21-41-57.jpg',
-      '/images/carousel2.png',
+      '/images/carousel2.jpg',
       '/images/PHOTO-2024-11-07-21-38-48.jpg',
     ],
     features: [
@@ -183,8 +183,8 @@ export const services: Service[] = [
     heroImage: '/images/PHOTO-2024-11-07-21-41-57-2.jpg',
     gallery: [
       '/images/PHOTO-2024-11-07-21-41-57-2.jpg',
-      '/images/carousel1.png',
-      '/images/carousel3.png',
+      '/images/carousel1.jpg',
+      '/images/carousel3.jpg',
     ],
     features: [
       { t: 'Films teintés homologués', d: "Plusieurs niveaux d'opacité, pose sans bulles." },

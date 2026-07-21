@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { navLinks, phoneHref } from '@/data/nav';
+import { navLinks } from '@/data/nav';
 import { services } from '@/data/services';
 import MobileMenu from './MobileMenu';
 
@@ -103,9 +103,9 @@ export default function Header() {
             )}
           </div>
 
-          <a href={phoneHref} className="btn-holo max-[900px]:hidden">
+          <Link href="/#contact" className="btn-holo max-[900px]:hidden">
             Prendre rendez-vous
-          </a>
+          </Link>
 
           <button
             onClick={() => setNavOpen(true)}

@@ -2,7 +2,6 @@ import Button from '@/components/ui/Button';
 import HoloText from '@/components/ui/HoloText';
 import AnimatedStat from '@/components/ui/AnimatedStat';
 import ProtectedVideo from '@/components/ui/ProtectedVideo';
-import { phoneHref } from '@/data/nav';
 import { stats } from '@/data/stats';
 
 export default function Hero() {
@@ -46,7 +45,7 @@ export default function Hero() {
             className="animate-fade-up flex flex-wrap gap-[.9rem] mt-[2.2rem]"
             style={{ animationDelay: '.3s' }}
           >
-            <Button href={phoneHref}>Prendre rendez-vous</Button>
+            <Button href="/#contact">Prendre rendez-vous</Button>
             <Button href="#services" variant="outline">
               Voir nos services
             </Button>
@@ -78,7 +77,7 @@ export default function Hero() {
             <ProtectedVideo
               className="absolute inset-0 w-full h-full object-cover"
               src="/videos/videoPlayer.mp4"
-              poster="/images/carousel3.png"
+              poster="/images/carousel3.jpg"
               autoPlay
               muted
               loop

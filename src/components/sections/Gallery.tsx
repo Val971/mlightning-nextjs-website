@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import HoloText from '@/components/ui/HoloText';
 import Reveal from '@/components/ui/Reveal';
 import ProtectedImage from '@/components/ui/ProtectedImage';
@@ -13,6 +13,56 @@ const spanClass: Record<string, string> = {
   wide: 'col-span-2 max-[640px]:col-span-1',
   normal: '',
 };
+
+type GalleryVideoProps = {
+  src: string;
+  poster?: string;
+  alt: string;
+  className?: string;
+};
+
+/**
+ * Vidéo de la grille qui ne joue que lorsqu'elle est réellement visible à
+ * l'écran (IntersectionObserver), au lieu des 3 vidéos en autoplay
+ * permanent auparavant — évite de télécharger/décoder simultanément
+ * plusieurs vidéos hors champ, surtout sur mobile.
+ */
+function GalleryVideo({ src, poster, alt, className }: GalleryVideoProps) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.play().catch(() => {});
+        } else {
+          el.pause();
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <ProtectedVideo
+      ref={ref}
+      src={src}
+      poster={poster}
+      aria-label={alt}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      className={className}
+    />
+  );
+}
 
 export default function Gallery() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -73,15 +123,10 @@ export default function Gallery() {
               className="group relative m-0 block w-full h-full overflow-hidden rounded-[18px] border border-white/10 cursor-zoom-in"
             >
               {item.type === 'video' ? (
-                <ProtectedVideo
+                <GalleryVideo
                   src={item.src}
                   poster={item.poster}
-                  aria-label={item.alt}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
+                  alt={item.alt}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               ) : (
