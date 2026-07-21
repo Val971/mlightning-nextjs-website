@@ -72,6 +72,12 @@ export default function Contact({
                   ))}
                 </div>
               </div>
+
+              <p className="flex items-center gap-[.5rem] text-white/60 text-[.88rem] mt-5">
+                <span aria-hidden>✈️</span>
+                Client en Guadeloupe ? Nous nous déplaçons ponctuellement
+                sur place, sans problème — parlez-nous de votre projet.
+              </p>
             </div>
 
             <div className="bg-[rgba(7,7,12,.55)] backdrop-blur-[6px] border border-white/[.12] rounded-2xl p-4 sm:p-8">

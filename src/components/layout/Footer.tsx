@@ -57,6 +57,11 @@ export default function Footer() {
             <br />
             {openingHours.hours}
           </p>
+
+          <p className="text-[.85rem] text-white/50 leading-[1.6] mt-4">
+            ✈️ Déplacements ponctuels en Guadeloupe possibles, sur
+            rendez-vous.
+          </p>
         </div>
 
         <div>

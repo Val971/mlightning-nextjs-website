@@ -38,4 +38,18 @@ export const serviceAreas = {
   ],
   // Villes limitrophes dans l'Oise.
   oise: ['Chantilly', 'Compiègne', 'Beauvais', 'Senlis'],
+  // Guadeloupe — interventions ponctuelles sur place (déplacement ou
+  // installateur partenaire), pas une zone couverte en continu comme le
+  // Val-d'Oise. Communes principales, pour matcher les recherches type
+  // "LED d'ambiance voiture Guadeloupe".
+  guadeloupe: [
+    'Pointe-à-Pitre',
+    'Les Abymes',
+    'Baie-Mahault',
+    'Le Gosier',
+    'Sainte-Anne',
+    'Le Moule',
+    'Saint-François',
+    'Basse-Terre',
+  ],
 };

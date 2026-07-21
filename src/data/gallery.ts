@@ -47,5 +47,11 @@ export const gallery: GalleryItem[] = [
     src: '/videos/VIDEO-2024-05-15-16-35-39.mp4',
     alt: 'Présentation Audi Q2 après installation, garage Mlightning',
     span: 'normal',
+  },
+  {
+    type: 'video',
+    src: '/videos/videoPlayer.mp4',
+    alt: "Éclairage d'ambiance sur mesure, aperçu vidéo",
+    span: 'tall',
   }
 ];

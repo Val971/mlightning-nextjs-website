@@ -8,19 +8,58 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="max-w-content mx-auto px-6 pt-[clamp(3rem,7vw,6rem)] pb-[clamp(3rem,6vw,5rem)]"
+      className="relative min-h-[92vh] max-[900px]:min-h-[100svh] flex items-center overflow-hidden"
     >
-      <div className="grid grid-cols-[1.15fr_.85fr] max-[900px]:grid-cols-1 gap-[clamp(2rem,4vw,4rem)] items-center">
-        <div>
+      {/* Vidéo en fond plein cadre, derrière tout le contenu du Hero.
+          Cette source est filmée en paysage (16:9) : un simple `object-cover`
+          plein écran la recadre légèrement sur les bords sans zoom agressif
+          ni perte de netteté, donc pas besoin du montage flou/net utilisé
+          pour une vidéo portrait. */}
+      <div className="absolute inset-0 -z-10 bg-[#07070c]">
+        <ProtectedVideo
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/videos/videoPlayer2.mp4"
+          poster="/images/carousel3.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label="Réalisation Mlightning Custom en vidéo"
+        />
+        {/* Assombrit légèrement le bas pour la lisibilité des boutons. */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(7,7,12,.1) 0%, rgba(7,7,12,.25) 55%, rgba(7,7,12,.65) 100%)',
+          }}
+        />
+        {/* Assombrit un peu la gauche (où vit le texte) sur desktop uniquement. */}
+        <div
+          className="absolute inset-0 max-[900px]:hidden"
+          style={{
+            background:
+              'linear-gradient(90deg, rgba(7,7,12,.5) 0%, rgba(7,7,12,.08) 55%, transparent 100%)',
+          }}
+        />
+      </div>
+
+      <div className="max-w-content mx-auto px-6 py-[clamp(4rem,10vw,7rem)] w-full">
+        <div
+          className="max-w-[56ch]"
+          style={{ textShadow: '0 2px 20px rgba(0,0,0,.55)' }}
+        >
           <span
-            className="animate-fade-up inline-flex items-center gap-[.55rem] px-4 py-2 rounded-pill border border-white/[.16] bg-white/[.04] text-[.8rem] font-semibold uppercase tracking-[.06em] text-white/80"
+            className="animate-fade-up inline-flex items-center gap-[.55rem] px-4 py-2 rounded-pill border border-white/[.16] bg-white/[.06] backdrop-blur-[6px] text-[.8rem] font-semibold uppercase tracking-[.06em] text-white/80"
             style={{ animationDelay: '0s' }}
           >
             <span
               className="w-[7px] h-[7px] rounded-full bg-[#7dd3fc]"
               style={{ boxShadow: '0 0 10px #7dd3fc' }}
             />
-            Customisation auto · Région parisienne
+            Customisation auto · Près de chez vous
+
           </span>
 
           <h1
@@ -33,7 +72,7 @@ export default function Hero() {
           </h1>
 
           <p
-            className="animate-fade-up text-[clamp(1.05rem,1.5vw,1.28rem)] text-white/70 max-w-[50ch] mt-6 leading-[1.6]"
+            className="animate-fade-up text-[clamp(1.05rem,1.5vw,1.28rem)] text-white/80 max-w-[50ch] mt-6 leading-[1.6]"
             style={{ animationDelay: '.2s' }}
           >
             LED d&apos;ambiance, ciel étoilé, CarPlay, volants sur-mesure. On
@@ -61,42 +100,11 @@ export default function Hero() {
                   value={s.value}
                   className="holo-text font-heading font-extrabold text-[1.9rem]"
                 />
-                <div className="text-[.82rem] text-white/[.55] mt-[.15rem]">
+                <div className="text-[.82rem] text-white/70 mt-[.15rem]">
                   {s.label}
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        <div
-          className="animate-fade-up relative aspect-[4/5] rounded-[26px] overflow-hidden border border-white/10"
-          style={{ animationDelay: '.15s' }}
-        >
-          <div className="floaty relative w-full h-full">
-            <ProtectedVideo
-              className="absolute inset-0 w-full h-full object-cover"
-              src="/videos/videoPlayer.mp4"
-              poster="/images/carousel3.jpg"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label="Réalisation Mlightning Custom en vidéo"
-            />
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  'linear-gradient(180deg, transparent 45%, rgba(7,7,12,.7))',
-              }}
-            />
-            <div className="absolute left-[1.1rem] bottom-[1.1rem] right-[1.1rem] flex items-center gap-[.7rem] pointer-events-none">
-              <span className="px-[.8rem] py-[.4rem] rounded-pill bg-[rgba(7,7,12,.6)] backdrop-blur-[6px] border border-white/[.14] text-[.78rem] font-semibold">
-                ✦ Réalisation Mlightning
-              </span>
-            </div>
           </div>
         </div>
       </div>

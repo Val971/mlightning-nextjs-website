@@ -60,9 +60,14 @@ export default async function LocalBusinessSchema() {
       closes,
     },
     sameAs: socials.map((s) => s.url),
-    // Communes réellement desservies (Val-d'Oise + Oise limitrophe) — aide
-    // Google à associer les recherches géolocalisées à notre fiche.
-    areaServed: [...serviceAreas.valdoise, ...serviceAreas.oise].map((city) => ({
+    // Communes réellement desservies (Val-d'Oise + Oise limitrophe, plus
+    // Guadeloupe en interventions ponctuelles) — aide Google à associer les
+    // recherches géolocalisées à notre fiche, y compris hors métropole.
+    areaServed: [
+      ...serviceAreas.valdoise,
+      ...serviceAreas.oise,
+      ...serviceAreas.guadeloupe,
+    ].map((city) => ({
       '@type': 'City',
       name: city,
     })),

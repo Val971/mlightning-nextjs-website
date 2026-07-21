@@ -266,7 +266,8 @@ export default async function ServicePage({ params }: Props) {
             marques — Audi, Mercedes-Benz, Volkswagen, BMW, Peugeot, Renault,
             Citroën, Ford et bien d&apos;autres. Basés à Persan, nous
             intervenons dans tout le Val-d&apos;Oise (95) et les villes
-            limitrophes de l&apos;Oise.
+            limitrophes de l&apos;Oise, ainsi que ponctuellement en
+            Guadeloupe sur rendez-vous.
           </p>
         </Reveal>
 
@@ -283,6 +284,22 @@ export default async function ServicePage({ params }: Props) {
 
         <div className="mt-4 flex flex-wrap gap-[.55rem]">
           {[...serviceAreas.valdoise, ...serviceAreas.oise].map((city) => (
+            <span
+              key={city}
+              className="px-[.85rem] py-[.4rem] rounded-pill border border-white/[.08] bg-white/[.015] text-[.78rem] text-white/55"
+            >
+              {city}
+            </span>
+          ))}
+        </div>
+
+        {/* Guadeloupe affichée à part : zone d'intervention ponctuelle, pas
+            une couverture continue comme le Val-d'Oise. */}
+        <div className="mt-4 flex flex-wrap items-center gap-[.55rem]">
+          <span className="text-[.78rem] text-white/40 font-semibold uppercase tracking-[.06em]">
+            Guadeloupe (sur rendez-vous)
+          </span>
+          {serviceAreas.guadeloupe.map((city) => (
             <span
               key={city}
               className="px-[.85rem] py-[.4rem] rounded-pill border border-white/[.08] bg-white/[.015] text-[.78rem] text-white/55"
