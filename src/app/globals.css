@@ -217,6 +217,20 @@ button {
   animation: marqueeScroll 26s linear infinite;
 }
 
+/* Anneau qui pulse doucement autour de la bulle flottante WhatsApp, pour
+   attirer l'œil sans être agressif. */
+@keyframes whatsappPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+  }
+}
+.whatsapp-pulse {
+  animation: whatsappPulse 2.4s ease-out infinite;
+}
+
 /* Décourage la sauvegarde directe des photos/vidéos de réalisations
    (clic-droit, glisser-déposer, menu contextuel iOS). Voir ProtectedImage /
    ProtectedVideo — une capture d'écran reste toujours possible. */
@@ -240,7 +254,8 @@ button {
   .floaty,
   .marquee-track,
   .holo-text,
-  .btn-holo {
+  .btn-holo,
+  .whatsapp-pulse {
     animation: none !important;
   }
   .mobile-menu-backdrop,
